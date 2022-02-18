@@ -24,7 +24,7 @@
 
     <header class="mb-auto text-dark">
         <div class="text-dark">
-            <a href="${mvc.basePath}" class="text-dark">
+            <a href="${mvc.basePath}/portada" class="text-dark">
                 <h3 class="float-md-start mb-0">Cover</h3>
             </a>
 
@@ -51,9 +51,8 @@
     </header>
 
     <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="row mb-3 text-center">
 
-            <ul id="niveles">
                 <c:forEach var="nivel" items="${niveles}">
                     <div class="col">
                         <div class="card mb-4 rounded-3 shadow-sm">
@@ -74,8 +73,11 @@
                         </div>
                     </div>
                 </c:forEach>
-            </ul>
 
+        </div>
+
+        <div class="lead text-center">
+            <a href="mvc/mundos/mundo" type="button" class="w-25 btn btn-lg btn-danger">Volver a Mundos</a>
         </div>
     </main>
 

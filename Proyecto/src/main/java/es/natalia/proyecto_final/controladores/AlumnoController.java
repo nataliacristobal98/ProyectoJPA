@@ -21,8 +21,10 @@ public class AlumnoController {
     @Inject
     AlumnoService alumnoService;
 
-    @Path("/")
+
+    // Prueba para ver el listado de alumnos
     @GET
+    @Path("/")
     public String index() {
         models.put("alumnos", alumnoService.findAll());
         return "login/prueba";

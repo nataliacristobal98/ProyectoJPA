@@ -28,13 +28,16 @@ public class MundoController {
     @Inject
     MundoService mundoService;
 
-    @Path("/")
+    // Listado de Mundos, en esta pantalla se accese a los niveles
     @GET
+    @Path("/")
     public String index() {
+        // Llamamos al método findAll() para el listado de Mundos disponibles en la BD
         models.put("mundos", mundoService.findAll());
         return "mundos/mundos-listado";
     }
 
+    // Listado de Niveles por el Mundo seleccionado. Se pasa el id del Mundo para rescatar los Niveles asociado a este.
     @GET
     @Path("{id}")
     public String detalle(@PathParam("id") @NotNull Long id) {
@@ -42,8 +45,12 @@ public class MundoController {
         Optional<Mundo> mundo = mundoService.buscarPorId(id);
 
         if (mundo.isPresent()) {
+            // Si el Mundo existe, se hará la busqueda de Niveles pertinente, para ello llamamos al método correspondiente
             List<Nivel> niveles = mundoService.buscarNiveles(mundo.get());
+
+            //
             models.put("mundo", mundo.get());
+            // Mandamos los datos de los Niveles para usarlos en la pantalla
             models.put("niveles", niveles);
             return "mundos/mundo-nivel";
         }

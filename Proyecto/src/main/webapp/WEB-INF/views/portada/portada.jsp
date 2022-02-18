@@ -24,7 +24,7 @@
         
         <header class="mb-auto text-dark">
             <div class="text-dark">
-                <a href="${mvc.basePath}" class="text-dark">
+                <a href="${mvc.basePath}/portada" class="text-dark">
                     <h3 class="float-md-start mb-0">Cover</h3>
                 </a>
                 

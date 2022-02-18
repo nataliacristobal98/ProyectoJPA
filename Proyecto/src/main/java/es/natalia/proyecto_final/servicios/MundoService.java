@@ -1,17 +1,18 @@
 package es.natalia.proyecto_final.servicios;
 
-import es.natalia.proyecto_final.dao.NivelDAO;
-import es.natalia.proyecto_final.dao.NivelDAOImpl;
 import es.natalia.proyecto_final.entidades.Mundo;
 import es.natalia.proyecto_final.entidades.Nivel;
+import es.natalia.proyecto_final.entidades.Pregunta;
+import es.natalia.proyecto_final.entidades.Test;
 import es.natalia.proyecto_final.repositorio.MundoRepository;
 import es.natalia.proyecto_final.repositorio.NivelRepository;
+import es.natalia.proyecto_final.repositorio.TestRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @ApplicationScoped
 public class MundoService {
@@ -21,6 +22,9 @@ public class MundoService {
 
     @Inject
     NivelRepository nivelRepository;
+
+    @Inject
+    TestRepository testRepository;
 
     public List<Mundo> findAll() {
         return mundoRepository.findAll();
@@ -35,6 +39,11 @@ public class MundoService {
     // La busqueda del listado de niveles
     public List<Nivel> buscarNiveles(Mundo mundo) {
         return nivelRepository.findByMundo(mundo);
+    }
+
+    // La busqueda del listado de preguntas por niveles
+    public Set<Pregunta> buscarPreguntas(Test test) {
+        return testRepository.findByPreguntas(test);
     }
 
 }
