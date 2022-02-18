@@ -2,6 +2,8 @@ package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.Mundo;
 import es.natalia.proyecto_final.entidades.Nivel;
+import es.natalia.proyecto_final.entidades.Pregunta;
+import es.natalia.proyecto_final.entidades.Test;
 import es.natalia.proyecto_final.servicios.MundoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @Path("/mundos/mundo")
@@ -57,7 +60,25 @@ public class MundoController {
         return "redirect:mundos/mundo-listado";
     }
 
+    // Para ver las preguntas
+    @GET
+    @Path("{idM}/{idN}")
+    public String editar(@PathParam("idM") Long idM, @PathParam("idN") Long idN) {
 
+        Optional<Mundo> mundo = mundoService.buscarPorId(idM);
+
+        if (mundo.isPresent()) {
+            Optional<Nivel> nivel = mundoService.buscarPorIdNivel(idN);
+            Optional<Test> test = mundoService.buscarTest(nivel);
+
+            Set<Pregunta> preguntas = mundoService.buscarPreguntas(test.get());
+
+
+            models.put("preguntas", preguntas);
+            return "mundos/nivel-test";
+        }
+        return "redirect:mundos/mundo-nivel";
+    }
 
 
 }

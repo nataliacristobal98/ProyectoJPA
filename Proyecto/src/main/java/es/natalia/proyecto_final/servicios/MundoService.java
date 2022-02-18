@@ -41,6 +41,13 @@ public class MundoService {
         return nivelRepository.findByMundo(mundo);
     }
 
+    public Optional<Nivel> buscarPorIdNivel(Long id) {
+        return nivelRepository.findOptionalBy(id);
+    }
+
+    // Encontrar el test asociado al nivel
+    public Optional<Test> buscarTest(Optional<Nivel> nivel) {return nivelRepository.findByNivel(nivel);}
+
     // La busqueda del listado de preguntas por niveles
     public Set<Pregunta> buscarPreguntas(Test test) {
         return testRepository.findByPreguntas(test);
