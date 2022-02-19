@@ -1,18 +1,17 @@
 package es.natalia.proyecto_final.controladores;
 
-import es.natalia.proyecto_final.entidades.Mundo;
-import es.natalia.proyecto_final.servicios.MundoService;
+import es.natalia.proyecto_final.entidades.*;
+import es.natalia.proyecto_final.servicios.NivelService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
-import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Optional;
+import java.util.List;
 
 @Slf4j
 @Path("/niveles/nivel")
@@ -24,20 +23,38 @@ public class NivelesController {
     private Models models;
 
     @Inject
-    MundoService mundoService;
+    NivelService nivelService;
 
+    // Menú de Nivel -> Con su Lección y su Test correspondiente
     @GET
     @Path("{id}")
-    public String detalle(@PathParam("id") @NotNull Long id) {
+    public String editar(@PathParam("id") Long id) {
 
-        Optional<Mundo> mundo = mundoService.buscarPorId(id);
-        //List<Nivel> niveles = mundoService.buscarNiveles(id);
+        Nivel nivel = nivelService.buscarPorId(id);
 
-        if (mundo.isPresent()) {
-            models.put("mundo", mundo.get());
-            //models.put("niveles", niveles);
-            return "mundos/mundo-nivel";
-        }
-        return "redirect:mundos/mundo-listado";
+
+            Test test = nivelService.buscarTest(nivel);
+            Leccion leccion = nivelService.buscarLeccion(nivel);
+
+
+            models.put("nivel", nivel);
+            models.put("leccion", leccion);
+            models.put("test", test);
+            return "niveles/nivel-menu";
+    }
+
+    @GET
+    @Path("{idN}/{idT}")
+    public String editar(@PathParam("idN") Long idN, @PathParam("idT") Long idT) {
+
+        Nivel nivel = nivelService.buscarPorId(idN);
+
+        Test test = nivelService.buscarPorIdTest(idT);
+        List<Pregunta> preguntas = nivelService.findAll();
+
+        models.put("nivel", nivel);
+        models.put("test", test);
+        models.put("preguntas", preguntas);
+        return "niveles/nivel-test";
     }
 }

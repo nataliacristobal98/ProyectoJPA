@@ -1,14 +1,16 @@
 package es.natalia.proyecto_final.repositorio;
 
-import es.natalia.proyecto_final.entidades.Nivel;
+import es.natalia.proyecto_final.entidades.Pregunta;
 import es.natalia.proyecto_final.entidades.Test;
 import org.apache.deltaspike.data.api.EntityRepository;
 import org.apache.deltaspike.data.api.Repository;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 
 @Repository
-public interface TestRepository extends EntityRepository<Test, Long> {
+public interface PreguntaRepository extends EntityRepository<Pregunta, Long> {
 
-    Test findByNivel(Nivel nivel);
+    List<Pregunta> findByTest(Test test);
+
 }

@@ -63,7 +63,7 @@
                             <div class="card-body">
                                 <c:choose>
                                     <c:when test="${nivel.desbloqueado == true}">
-                                        <a href="${mvc.basePath}/mundos/mundo/${mundo.id}/${nivel.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
+                                        <a href="${mvc.basePath}/niveles/nivel/${nivel.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
                                     </c:when>
                                     <c:otherwise>
                                         <button type="button" class="w-100 btn btn-lg btn-danger" disabled="disabled">Jugar</button>

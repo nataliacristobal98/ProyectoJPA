@@ -8,4 +8,5 @@ import org.apache.deltaspike.data.api.Repository;
 public interface MundoRepository extends EntityRepository<Mundo, Long> {
 
 
+
 }

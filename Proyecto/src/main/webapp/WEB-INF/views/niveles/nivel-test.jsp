@@ -54,12 +54,13 @@
     <main>
         <div class="row mb-3 text-center">
 
-            <c:forEach var="preguntas" items="${preguntas}">
+            <c:forEach var="pregunta" items="${preguntas}">
                 <div class="col">
                     <div class="card mb-4 rounded-3 shadow-sm">
                         <div class="card-header py-3">
                             <h4 class="my-0 fw-normal">Pregunta ${pregunta.id}</h4>
-                            <h4 class="my-0 fw-normal">Pregunta ${pregunta.textoPregunta}</h4>
+                            <h4 class="my-0 fw-normal">${pregunta.codigo_pregunta}</h4>
+                            <h4 class="my-0 fw-normal">${pregunta.texto_pregunta}</h4>
                         </div>
                     </div>
                 </div>

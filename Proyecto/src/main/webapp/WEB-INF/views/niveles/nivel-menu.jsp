@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>4 - Niveles</title>
+    <title>5 - Nivel-Menú</title>
 
     <!-- Bootstrap, JQUERY-->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -52,32 +52,36 @@
 
     <main>
         <div class="row mb-3 text-center">
+            <h3>Nivel ${nivel.id}</h3>
 
-                <c:forEach var="nivel" items="${niveles}">
-                    <div class="col">
-                        <div class="card mb-4 rounded-3 shadow-sm">
-                            <div class="card-header py-3">
-                                <h4 class="my-0 fw-normal">Nivel ${nivel.id}</h4>
-                                <h3>${nivel.dificultad}</h3>
-                            </div>
-                            <div class="card-body">
-                                <c:choose>
-                                    <c:when test="${nivel.desbloqueado == true}">
-                                        <a href="${mvc.basePath}/niveles/nivel/${nivel.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <button type="button" class="w-100 btn btn-lg btn-danger" disabled="disabled">Jugar</button>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Lección ${leccion.id}</h4>
+                            <h3>${leccion.contenido}</h3>
+                        </div>
+                        <div class="card-body">
+                                    <a href="#" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
                         </div>
                     </div>
-                </c:forEach>
+                </div>
+
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Test ${test.id}</h4>
+                        <h3>${test.codigo}</h3>
+                    </div>
+                    <div class="card-body">
+                        <a href="${mvc.basePath}/niveles/nivel/${nivel.id}/${test.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
         <div class="lead text-center">
-            <a href="${mvc.basePath}/mundos/mundo" type="button" class="w-25 btn btn-lg btn-danger">Volver a Mundos</a>
+            <a href="${mvc.basePath}/mundos/mundo/${mundo.id}" type="button" class="w-25 btn btn-lg btn-danger">Volver a Niveles</a>
         </div>
     </main>
 

@@ -1,10 +1,8 @@
 package es.natalia.proyecto_final.controladores;
 
-import es.natalia.proyecto_final.entidades.Mundo;
-import es.natalia.proyecto_final.entidades.Nivel;
-import es.natalia.proyecto_final.entidades.Pregunta;
-import es.natalia.proyecto_final.entidades.Test;
+import es.natalia.proyecto_final.entidades.*;
 import es.natalia.proyecto_final.servicios.MundoService;
+import es.natalia.proyecto_final.servicios.NivelService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
@@ -31,6 +29,9 @@ public class MundoController {
     @Inject
     MundoService mundoService;
 
+    @Inject
+    NivelService nivelService;
+
     // Listado de Mundos, en esta pantalla se accese a los niveles
     @GET
     @Path("/")
@@ -49,7 +50,7 @@ public class MundoController {
 
         if (mundo.isPresent()) {
             // Si el Mundo existe, se hará la busqueda de Niveles pertinente, para ello llamamos al método correspondiente
-            List<Nivel> niveles = mundoService.buscarNiveles(mundo.get());
+            List<Nivel> niveles = nivelService.buscarNiveles(mundo.get());
 
             //
             models.put("mundo", mundo.get());
@@ -58,26 +59,6 @@ public class MundoController {
             return "mundos/mundo-nivel";
         }
         return "redirect:mundos/mundo-listado";
-    }
-
-    // Para ver las preguntas
-    @GET
-    @Path("{idM}/{idN}")
-    public String editar(@PathParam("idM") Long idM, @PathParam("idN") Long idN) {
-
-        Optional<Mundo> mundo = mundoService.buscarPorId(idM);
-
-        if (mundo.isPresent()) {
-            Optional<Nivel> nivel = mundoService.buscarPorIdNivel(idN);
-            Optional<Test> test = mundoService.buscarTest(nivel);
-
-            Set<Pregunta> preguntas = mundoService.buscarPreguntas(test.get());
-
-
-            models.put("preguntas", preguntas);
-            return "mundos/nivel-test";
-        }
-        return "redirect:mundos/mundo-nivel";
     }
 
 
