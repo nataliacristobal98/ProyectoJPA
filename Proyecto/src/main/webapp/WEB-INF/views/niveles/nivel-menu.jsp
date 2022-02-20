@@ -81,7 +81,7 @@
         </div>
 
         <div class="lead text-center">
-            <a href="${mvc.basePath}/mundos/mundo/${mundo.id}" type="button" class="w-25 btn btn-lg btn-danger">Volver a Niveles</a>
+            <a href="${mvc.basePath}/mundos/mundo/${mundo}" type="button" class="w-25 btn btn-lg btn-danger">Volver a Niveles</a>
         </div>
     </main>
 

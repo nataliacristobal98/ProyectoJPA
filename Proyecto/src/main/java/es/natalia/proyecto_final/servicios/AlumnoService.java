@@ -23,4 +23,6 @@ public class AlumnoService {
     }
 
     public void guardar(Alumno alumno){alumnoRepository.save(alumno);}
+
+    public Alumno buscarAlumno(String codigo){return alumnoRepository.findByCodigoAlumno(codigo);}
 }

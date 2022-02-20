@@ -37,6 +37,7 @@ public class NivelesController {
             Leccion leccion = nivelService.buscarLeccion(nivel);
 
 
+            models.put("mundo", nivel.getMundo().getId());
             models.put("nivel", nivel);
             models.put("leccion", leccion);
             models.put("test", test);

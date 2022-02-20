@@ -43,7 +43,7 @@
                     </a>
 
                     <div class="text-end mx-4">
-                        <button type="button" class="btn btn-outline-dark me-2">Login</button>
+                        <a href="${mvc.basePath}/login" class="btn btn-outline-dark me-2">Login</a>
                         <button type="button" class="btn btn-danger">Sign-up</button>
                     </div>
                 </nav>

@@ -8,6 +8,7 @@ import org.apache.deltaspike.data.api.Repository;
 @Repository
 public interface AlumnoRepository extends EntityRepository<Alumno, Long> {
 
-
+    // Encontrar por codigo
+    Alumno findByCodigoAlumno(String codigo);
 
 }

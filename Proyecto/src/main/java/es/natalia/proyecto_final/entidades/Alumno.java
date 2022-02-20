@@ -12,6 +12,15 @@ import java.util.Set;
 
 // La entidad ALUMNO define a los usuarios que usaran la plataforma
 public class Alumno {
+    public Alumno(String nombre, String contrasena, String icono, String codigoAlumno, Profesor profesor) {
+
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+        this.icono = icono;
+        this.codigoAlumno = codigoAlumno;
+        this.profesor = profesor;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

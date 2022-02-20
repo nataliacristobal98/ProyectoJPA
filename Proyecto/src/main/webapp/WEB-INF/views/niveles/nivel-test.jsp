@@ -59,8 +59,8 @@
                     <div class="card mb-4 rounded-3 shadow-sm">
                         <div class="card-header py-3">
                             <h4 class="my-0 fw-normal">Pregunta ${pregunta.id}</h4>
-                            <h4 class="my-0 fw-normal">${pregunta.codigo_pregunta}</h4>
-                            <h4 class="my-0 fw-normal">${pregunta.texto_pregunta}</h4>
+                            <h4 class="my-0 fw-normal">${pregunta.codigoPregunta}</h4>
+                            <h4 class="my-0 fw-normal">${pregunta.textoPregunta}</h4>
                         </div>
                     </div>
                 </div>
