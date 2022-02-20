@@ -26,7 +26,7 @@
 
     <header class="mb-auto text-dark">
         <div class="text-dark">
-            <a href="portada.html" class="text-dark">
+            <a href="${mvc.basePath}/portada" class="text-dark">
                 <h3 class="float-md-start mb-0">Cover</h3>
             </a>
             <nav class="nav nav-masthead float-md-end">
@@ -49,8 +49,8 @@
                 </a>
 
                 <div class="text-end mx-4">
-                    <button type="button" class="btn btn-outline-dark me-2 active">Login</button>
-                    <button type="button" class="btn btn-danger">Sign-up</button>
+                    <a href="${mvc.basePath}/login" class="btn btn-outline-dark me-2">Login</a>
+                    <a href="${mvc.basePath}/login/signup" class="btn btn-danger">Sign-up</a>
                 </div>
             </nav>
         </div>
@@ -82,7 +82,7 @@
             </div>
             <button class="w-100 btn btn-lg btn-danger" type="submit">Iniciar</button>
 
-            <p class="mt-5 mb-3 text-muted">¿No tienes cuenta? <a href="portada.html"
+            <p class="mt-5 mb-3 text-muted">¿No tienes cuenta? <a href="${mvc.basePath}/login/signup"
                                                                   class="text-danger">Registrate</a></p>
         </form>
     </main>

@@ -43,8 +43,8 @@
                 </a>
 
                 <div class="text-end mx-4">
-                    <button type="button" class="btn btn-outline-dark me-2">Login</button>
-                    <button type="button" class="btn btn-danger">Sign-up</button>
+                    <a href="${mvc.basePath}/login" class="btn btn-outline-dark me-2">Login</a>
+                    <a href="${mvc.basePath}/login/signup" class="btn btn-danger">Sign-up</a>
                 </div>
             </nav>
         </div>

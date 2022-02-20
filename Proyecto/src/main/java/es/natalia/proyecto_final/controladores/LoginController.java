@@ -2,11 +2,9 @@ package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.Alumno;
 import es.natalia.proyecto_final.entidades.Profesor;
-import es.natalia.proyecto_final.repositorio.AlumnoRepository;
 import es.natalia.proyecto_final.servicios.AlumnoService;
 import es.natalia.proyecto_final.servicios.ProfesorService;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.inject.Model;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
