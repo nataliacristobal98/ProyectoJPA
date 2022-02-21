@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>5 - Test</title>
+    <title>Perfil de usuario</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
@@ -15,6 +15,7 @@
 
     <!-- CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/cover.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/perfil.css" rel="stylesheet">
 
 </head>
 
@@ -52,53 +53,31 @@
 
 
     <main>
-        <div class="col-12">
-
-
-            <div class="card mb-4 rounded-3 shadow-sm">
-
-                <div class="card-body">
-                    <h3>Test</h3>
-
-                    <c:forEach var="pregunta" items="${preguntas}">
-                        <div class="card-header rounded-3 py-3">
-                            <h3 class="my-0 fw-normal text-center">${pregunta.textoPregunta}</h3>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="row m-3 justify-content-center">
-                            <c:forEach var="respuesta" items="${respuestas}">
-                                <c:choose>
-                                    <c:when test="${respuesta.pregunta.id == pregunta.id}">
-                                            <div class="col-5 card-header m-2 rounded-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                            ${respuesta.textoRespuesta}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                    </c:when>
-                                </c:choose>
-                            </c:forEach>
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="image m-4">
+                        <img src="${pageContext.request.contextPath}/resources/img/icono3.jpg" class="rounded" width="155">
+                    </div>
+                    <div class="ml-3 w-100">
+                        <h4 class="mb-0 mt-0">Alex Morrision</h4> <span>Senior Journalist</span>
+                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                            <div class="d-flex flex-column">
+                                <span class="articles">Articles</span> <span class="number1">38</span>
                             </div>
-
+                            <div class="d-flex flex-column">
+                                <span class="followers">Followers</span> <span class="number2">980</span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="rating">Rating</span> <span class="number3">8.9</span>
+                            </div>
                         </div>
-                    </c:forEach>
-
-
-
-
+                        <div class="button mt-2 d-flex flex-row align-items-center">
+                            <a href="${mvc.basePath}/mundos/mundo" class="btn btn-sm btn-outline-primary w-100">Ir a mundos</a>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
-
-            <div class=" text-center">
-                <button class="btn bg-danger text-white">Enviar</button>
-            </div>
-
-
         </div>
     </main>
 
