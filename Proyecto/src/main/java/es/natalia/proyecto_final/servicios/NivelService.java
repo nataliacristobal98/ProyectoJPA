@@ -1,10 +1,7 @@
 package es.natalia.proyecto_final.servicios;
 
 import es.natalia.proyecto_final.entidades.*;
-import es.natalia.proyecto_final.repositorio.LeccionRepository;
-import es.natalia.proyecto_final.repositorio.NivelRepository;
-import es.natalia.proyecto_final.repositorio.PreguntaRepository;
-import es.natalia.proyecto_final.repositorio.TestRepository;
+import es.natalia.proyecto_final.repositorio.*;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -25,6 +22,9 @@ public class NivelService {
     @Inject
     PreguntaRepository preguntaRepository;
 
+    @Inject
+    RespuestaRepository respuestaRepository;
+
     // La busqueda del listado de niveles
     public List<Nivel> buscarNiveles(Mundo mundo) {
         return nivelRepository.findByMundo(mundo);
@@ -43,7 +43,11 @@ public class NivelService {
         return testRepository.findBy(id);
     }
     public List<Pregunta> buscarPreguntas(Test test) {return preguntaRepository.findByTest(test);}
-    public List<Pregunta> findAll() {
-        return preguntaRepository.findAll();
+    public Pregunta buscarIdPregunta(Long id){return preguntaRepository.findBy(id);}
+
+    public List<Respuesta> buscarRespuestas() {
+        return respuestaRepository.findAll();
     }
+    public List<Respuesta> buscarRespuestasPorPregunta(Pregunta pregunta) {return respuestaRepository.findByPregunta(pregunta);}
+
 }

@@ -54,10 +54,13 @@ public class NivelesController {
         Test test = nivelService.buscarPorIdTest(idT);
         List<Pregunta> preguntas = nivelService.buscarPreguntas(test);
 
+        List<Respuesta> respuestas = nivelService.buscarRespuestas();
+
 
         models.put("nivel", nivel);
         models.put("test", test);
         models.put("preguntas", preguntas);
+        models.put("respuestas", respuestas);
         return "niveles/nivel-test";
     }
 }

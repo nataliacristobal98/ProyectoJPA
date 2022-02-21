@@ -52,19 +52,52 @@
 
 
     <main>
-        <div class="row mb-3 text-center">
+        <div class="col-12">
 
-            <c:forEach var="pregunta" items="${preguntas}">
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                            <h4 class="my-0 fw-normal">Pregunta ${pregunta.id}</h4>
-                            <h4 class="my-0 fw-normal">${pregunta.codigoPregunta}</h4>
-                            <h4 class="my-0 fw-normal">${pregunta.textoPregunta}</h4>
+
+            <div class="card mb-4 rounded-3 shadow-sm">
+
+                <div class="card-body">
+                    <h3>Test</h3>
+
+                    <c:forEach var="pregunta" items="${preguntas}">
+                        <div class="card-header rounded-3 py-3">
+                            <h3 class="my-0 fw-normal text-center">${pregunta.textoPregunta}</h3>
                         </div>
-                    </div>
+                        <div class="card-body">
+
+                            <div class="row m-3 justify-content-center">
+                            <c:forEach var="respuesta" items="${respuestas}">
+                                <c:choose>
+                                    <c:when test="${respuesta.pregunta.id == pregunta.id}">
+                                            <div class="col-5 card-header m-2 rounded-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                            ${respuesta.textoRespuesta}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                    </c:when>
+                                </c:choose>
+                            </c:forEach>
+                            </div>
+
+                        </div>
+                    </c:forEach>
+
+
+
+
                 </div>
-            </c:forEach>
+
+
+            </div>
+
+            <div class=" text-center">
+                <button class="btn bg-danger text-white">Enviar</button>
+            </div>
+
 
         </div>
     </main>
