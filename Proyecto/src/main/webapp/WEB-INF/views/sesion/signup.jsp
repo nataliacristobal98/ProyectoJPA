@@ -50,14 +50,14 @@
 
         <div class="text-end mx-4">
           <a href="${mvc.basePath}/login" class="btn btn-outline-dark me-2">Login</a>
-          <a href="${mvc.basePath}/login/signup" class="btn btn-danger">Sign-up</a>
+          <a href="${mvc.basePath}/signup" class="btn btn-danger">Sign-up</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main class="px-3 form-signin text-center">
-    <form action="${mvc.basePath}/login/signup/signup" method="post">
+    <form action="${mvc.basePath}/signup/signup" method="post">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
            class="bi bi-door-open" viewBox="0 0 16 16">
         <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />

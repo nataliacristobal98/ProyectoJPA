@@ -12,8 +12,12 @@ import java.util.Set;
 
 // La entidad ALUMNO define a los usuarios que usaran la plataforma
 public class Alumno {
-    public Alumno(String nombre, String contrasena, String icono, String codigoAlumno, Profesor profesor) {
 
+    // Constructores, uno vacío y otro para crear Alumnos(usuarios)
+    public Alumno() {
+
+    }
+    public Alumno(String nombre, String contrasena, String icono, String codigoAlumno, Profesor profesor) {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.icono = icono;
@@ -53,5 +57,6 @@ public class Alumno {
             joinColumns = @JoinColumn(name = "alumno_id"),
             inverseJoinColumns = @JoinColumn(name = "mundos_id"))
     private Set<Mundo> mundos = new LinkedHashSet<>();
+
 
 }
