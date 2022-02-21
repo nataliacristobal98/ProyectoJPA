@@ -44,7 +44,7 @@
 
                     <div class="text-end mx-4">
                         <a href="${mvc.basePath}/login" class="btn btn-outline-dark me-2">Login</a>
-                        <a href="${mvc.basePath}/login/signup" class="btn btn-danger">Sign-up</a>
+                        <a href="${mvc.basePath}/signup" class="btn btn-danger">Sign-up</a>
                     </div>
                 </nav>
             </div>

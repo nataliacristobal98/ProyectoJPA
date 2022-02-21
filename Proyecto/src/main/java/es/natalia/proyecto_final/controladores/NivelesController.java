@@ -11,6 +11,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -51,7 +52,8 @@ public class NivelesController {
         Nivel nivel = nivelService.buscarPorId(idN);
 
         Test test = nivelService.buscarPorIdTest(idT);
-        List<Pregunta> preguntas = nivelService.findAll();
+        List<Pregunta> preguntas = nivelService.buscarPreguntas(test);
+
 
         models.put("nivel", nivel);
         models.put("test", test);
