@@ -52,7 +52,7 @@
 
 
     <main>
-        <div class="col-12">
+        <div class="col-12 mt-3">
 
 
             <div class="card mb-4 rounded-3 shadow-sm">
@@ -60,6 +60,7 @@
                 <div class="card-body">
                     <h3>Test</h3>
 
+                    <form action="" method="post">
                     <c:forEach var="pregunta" items="${preguntas}">
                         <div class="card-header rounded-3 py-3">
                             <h3 class="my-0 fw-normal text-center">${pregunta.textoPregunta}</h3>
@@ -72,8 +73,8 @@
                                     <c:when test="${respuesta.pregunta.id == pregunta.id}">
                                             <div class="col-5 card-header m-2 rounded-3">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                    <input class="form-check-input" type="radio" name="${pregunta.codigoPregunta}" id="f${pregunta.codigoPregunta}" required>
+                                                    <label class="form-check-label" for="${pregunta.codigoPregunta}">
                                                             ${respuesta.textoRespuesta}
                                                     </label>
                                                 </div>
@@ -83,9 +84,15 @@
                             </c:forEach>
                             </div>
 
+
+
                         </div>
                     </c:forEach>
 
+                        <div class=" text-center">
+                            <button class="btn bg-danger text-white">Enviar</button>
+                        </div>
+                    </form>
 
 
 
@@ -94,9 +101,8 @@
 
             </div>
 
-            <div class=" text-center">
-                <button class="btn bg-danger text-white">Enviar</button>
-            </div>
+
+
 
 
         </div>

@@ -67,6 +67,8 @@
       </div>
       <div class="text-start">
         <p class="mt-3 mb-0">Icono:</p>
+        <input type="image" src="${pageContext.request.contextPath}/resources/img/icono1.jpg" style="border: double;" height="80" width="80"/>
+        <input type="image" src="${pageContext.request.contextPath}/resources/img/icono2.jpg" style="border: double;" height="80" width="80"/>
         <input type="image" src="${pageContext.request.contextPath}/resources/img/icono3.jpg" style="border: double;" height="80" width="80"/>
       </div>
       <div class="text-start">
