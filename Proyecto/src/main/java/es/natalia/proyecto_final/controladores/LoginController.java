@@ -38,6 +38,8 @@ public class LoginController {
 
             if(alumno != null){
                 if(alumno.getContrasena().equals(contrasena)){
+
+
                     // Redirect porque es otro controller
                     return "redirect:mundos/mundo";
                 }else{

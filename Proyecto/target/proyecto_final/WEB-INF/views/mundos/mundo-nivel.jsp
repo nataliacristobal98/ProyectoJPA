@@ -82,7 +82,7 @@
     </main>
 
     <footer class="mt-auto text-center">
-        <p>Si quieres saber más sobre nosotros siguenos en <a href="https://instagram.com/" class="text-danger">Instagram</a></p>
+        <p>Si quieres apoyar nuestro trabajo: <a href="${mvc.basePath}/donacion" class="text-danger">Donaciones</a></p>
     </footer>
 </div>
 

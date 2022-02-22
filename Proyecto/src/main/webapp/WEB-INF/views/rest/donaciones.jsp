@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>5 - Test</title>
+    <title>Donaciones</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
@@ -50,56 +50,9 @@
         </div>
     </header>
 
-
-    <main>
-        <div class="col-12">
+    <main class="px-3 text-center">
 
 
-            <div class="card mb-4 rounded-3 shadow-sm">
-
-                <div class="card-body">
-                    <h3>Test</h3>
-
-                    <c:forEach var="pregunta" items="${preguntas}">
-                        <div class="card-header rounded-3 py-3">
-                            <h3 class="my-0 fw-normal text-center">${pregunta.textoPregunta}</h3>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="row m-3 justify-content-center">
-                            <c:forEach var="respuesta" items="${respuestas}">
-                                <c:choose>
-                                    <c:when test="${respuesta.pregunta.id == pregunta.id}">
-                                            <div class="col-5 card-header m-2 rounded-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                            ${respuesta.textoRespuesta}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                    </c:when>
-                                </c:choose>
-                            </c:forEach>
-                            </div>
-
-                        </div>
-                    </c:forEach>
-
-
-
-
-                </div>
-
-
-            </div>
-
-            <div class=" text-center">
-                <button class="btn bg-danger text-white">Enviar</button>
-            </div>
-
-
-        </div>
     </main>
 
     <footer class="mt-auto text-center">
