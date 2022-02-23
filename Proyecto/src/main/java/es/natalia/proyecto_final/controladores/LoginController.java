@@ -1,17 +1,13 @@
 package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.Alumno;
-import es.natalia.proyecto_final.repositorio.EntityManagerProducer;
 import es.natalia.proyecto_final.servicios.AlumnoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.jms.Session;
 import jakarta.mvc.Controller;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
-import jakarta.resource.cci.ConnectionFactory;
+import jakarta.persistence.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -27,6 +23,10 @@ public class LoginController {
 
     @Inject
     AlumnoService alumnoService;
+
+    // Crear la sesión para el control de datos
+    @Inject
+    HttpServletRequest request;
 
     @Path("/")
     @GET
@@ -44,8 +44,11 @@ public class LoginController {
 
             if(alumno != null){
                 if(alumno.getContrasena().equals(contrasena)){
-                    /*EntityManager em;
-                    Session session = em.unwrap(Session.class);*/
+                        HttpSession session = request.getSession();
+                        session.setAttribute("alumno", alumno.getCodigoAlumno());
+                        session.setAttribute("alumno", alumno.getCodigoAlumno());
+
+                        System.out.println(session.getAttribute("alumno"));
 
                     // Redirect porque es otro controller
                     return "redirect:mundos/mundo";

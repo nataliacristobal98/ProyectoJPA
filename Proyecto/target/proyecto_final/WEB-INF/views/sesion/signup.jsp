@@ -22,6 +22,8 @@
 
 <body class="d-flex h-100 text-dark bg-light">
 
+<p>${sessionScope.alumno}</p>
+
 <div class="cover-container d-flex p-3 flex-column w-100">
 
   <header class="mb-auto text-dark">

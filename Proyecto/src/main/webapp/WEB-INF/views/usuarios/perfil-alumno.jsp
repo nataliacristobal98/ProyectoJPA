@@ -73,6 +73,9 @@
                             </div>
                         </div>
                         <div class="button mt-2 d-flex flex-row align-items-center">
+                            <a href="${mvc.basePath}/perfil/desconectar" class="btn btn-sm btn-outline-primary w-100">Desconectar sesión</a>
+                        </div>
+                        <div class="button mt-2 d-flex flex-row align-items-center">
                             <a href="${mvc.basePath}/mundos/mundo" class="btn btn-sm btn-outline-primary w-100">Ir a mundos</a>
                         </div>
                     </div>

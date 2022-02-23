@@ -6,9 +6,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -61,6 +59,15 @@ public class NivelesController {
         models.put("test", test);
         models.put("preguntas", preguntas);
         models.put("respuestas", respuestas);
+        return "niveles/nivel-test";
+    }
+
+    @POST
+    @Path("/resultTest")
+    public String resultadosTest(@FormParam(value="name") String nombre) {
+
+
+
         return "niveles/nivel-test";
     }
 }

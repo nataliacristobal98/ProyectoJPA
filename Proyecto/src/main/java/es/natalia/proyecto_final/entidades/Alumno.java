@@ -20,6 +20,7 @@ public class Alumno {
     public Alumno(String nombre, String contrasena, String icono, String codigoAlumno, Profesor profesor) {
         this.nombre = nombre;
         this.contrasena = contrasena;
+        this.puntos = 0;
         this.icono = icono;
         this.codigoAlumno = codigoAlumno;
         this.profesor = profesor;
@@ -36,6 +37,10 @@ public class Alumno {
     // Contraseña: Decidida por cada alumno en su login.
     @Column(name = "contrasena", nullable = false, length = 10)
     private String contrasena;
+
+    // Puntuacion: Total de todos los puntos del alumno
+    @Column(name = "puntos", length = 4)
+    private Integer puntos;
 
     // Icono: Imagen elegida por el usuario, sería su nombre de archivo (icono1.png)
     @Column(name = "icono", length = 300)
