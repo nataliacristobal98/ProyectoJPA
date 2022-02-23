@@ -1,11 +1,17 @@
 package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.Alumno;
+import es.natalia.proyecto_final.repositorio.EntityManagerProducer;
 import es.natalia.proyecto_final.servicios.AlumnoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.jms.Session;
 import jakarta.mvc.Controller;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
+import jakarta.resource.cci.ConnectionFactory;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -38,7 +44,8 @@ public class LoginController {
 
             if(alumno != null){
                 if(alumno.getContrasena().equals(contrasena)){
-
+                    /*EntityManager em;
+                    Session session = em.unwrap(Session.class);*/
 
                     // Redirect porque es otro controller
                     return "redirect:mundos/mundo";
@@ -55,5 +62,6 @@ public class LoginController {
 
         return "sesion/login";
     }
+
 
 }
