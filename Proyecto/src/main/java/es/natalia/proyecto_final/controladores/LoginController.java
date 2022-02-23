@@ -46,7 +46,7 @@ public class LoginController {
                 if(alumno.getContrasena().equals(contrasena)){
                         HttpSession session = request.getSession();
                         session.setAttribute("alumno", alumno.getCodigoAlumno());
-                        session.setAttribute("alumno", alumno.getCodigoAlumno());
+                        session.setAttribute("id", alumno.getId());
 
                         System.out.println(session.getAttribute("alumno"));
 

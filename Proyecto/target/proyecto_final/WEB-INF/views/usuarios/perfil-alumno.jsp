@@ -57,20 +57,20 @@
             <div class="card p-3">
                 <div class="d-flex align-items-center">
                     <div class="image m-4">
-                        <img src="${pageContext.request.contextPath}/resources/img/icono3.jpg" class="rounded" width="155">
+                        <img src="${alumno.icono}" class="rounded" width="155">
                     </div>
                     <div class="ml-3 w-100">
-                        <h4 class="mb-0 mt-0">Alex Morrision</h4> <span>Senior Journalist</span>
+                        <h4 class="mb-0 mt-0">${alumno.nombre}</h4> <span>Alumno</span>
                         <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
                             <div class="d-flex flex-column">
-                                <span class="articles">Articles</span> <span class="number1">38</span>
+                                <span class="followers">Código</span> <span class="number2">${alumno.codigoAlumno}</span>
                             </div>
+
                             <div class="d-flex flex-column">
-                                <span class="followers">Followers</span> <span class="number2">980</span>
+                                <span class="articles">Puntos</span> <span class="number1">${alumno.puntos}</span>
                             </div>
-                            <div class="d-flex flex-column">
-                                <span class="rating">Rating</span> <span class="number3">8.9</span>
-                            </div>
+
                         </div>
                         <div class="button mt-2 d-flex flex-row align-items-center">
                             <a href="${mvc.basePath}/perfil/desconectar" class="btn btn-sm btn-outline-primary w-100">Desconectar sesión</a>

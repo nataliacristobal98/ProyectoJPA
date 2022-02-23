@@ -18,8 +18,8 @@ public class AlumnoService {
         return alumnoRepository.findAll();
     }
 
-    public Optional<Alumno> buscarPorId(Long id) {
-        return alumnoRepository.findOptionalBy(id);
+    public Alumno buscarPorId(Long id) {
+        return alumnoRepository.findBy(id);
     }
 
     public void guardar(Alumno alumno){alumnoRepository.save(alumno);}
