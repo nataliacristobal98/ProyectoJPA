@@ -9,6 +9,8 @@ import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.persistence.NoResultException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -30,6 +32,10 @@ public class SignupController {
     @Inject
     ProfesorService profesorService;
 
+    // Crear la sesión para el control de datos
+    @Inject
+    HttpServletRequest request;
+
     @Inject
     private Models models;
 
@@ -42,10 +48,24 @@ public class SignupController {
         try {
             models.put("profesores", profesores);
         }catch (NoResultException e){
-            // Codigo si usuario está mal
             System.out.println(e);
-            return "sesion/login";
+            return "sesion/signup";
         }
+
+        // Controlamos que haya una sesión activa. Si la hay, no se puede acceder a esta pantalla ya que causará errores.
+        HttpSession session = request.getSession();
+        try {
+            if (session.getAttribute("iniciada").equals(true)) {
+                // Redirección a la pantalla principal
+                return "redirect:portada";
+            }
+        }catch (NullPointerException e){
+            // Si no hay una sesión, se permite el acceso a crear una
+            return "sesion/signup";
+        }
+
+
+
 
         return "sesion/signup";
     }
@@ -68,12 +88,19 @@ public class SignupController {
             Alumno alumnoNuevo = new Alumno(nombre, contrasena, icono, codigoAlumnoNuevo, profesorEncontrado);
 
             alumnoService.guardar(alumnoNuevo);
-            return "redirect:mundos/mundo";
+
+
+            HttpSession session = request.getSession();
+            session.setAttribute("iniciada", true);
+            session.setAttribute("alumno", alumnoNuevo.getCodigoAlumno());
+            session.setAttribute("id", alumnoNuevo.getId());
+
+            return "redirect:perfil";
 
         }catch (NoResultException e){
             // Codigo si usuario está mal
             System.out.println(e);
-            return "sesion/login";
+            return "redirect:perfil";
         }
 
     }

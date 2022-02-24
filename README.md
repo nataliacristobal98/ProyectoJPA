@@ -21,7 +21,7 @@ La aplicación comienza con una pantalla de inicio, en la cual puedes iniciar se
  
  - Código del alumno: A001 / Contraseña: flora123
 
- - Código del alumno: A002 / 
+ - Código del alumno: A002 / Contraseña: mArtE_08
 
 **Para crear una cuenta nueva simplemente habría que clickar en el botón Sign Up:**
  
@@ -35,6 +35,14 @@ La aplicación comienza con una pantalla de inicio, en la cual puedes iniciar se
 
 El código de alumno se generará automaticamente y se añadirá a la base de datos en función del profesor escogido.
 
+Una vez iniciada la sesión, se podrá acceder al perfil de usuario, donde se especifica los datos del usuario. 
+
+En esta, también se podrá consultar el código de alumno para el inicio de las sesiones, los nuevos usuarios serán redirigidos directamente a esta pantalla para que vean dicho código.
+
 #### 3.2. Control de mundos
 
 Una vez inicias sesión con una cuenta, podrás acceder a la pantalla de mundos. Estos se cargarán en función de si están desbloqueados con el usuario que está conectado.
+
+Se podrá seleccionar nivel de la misma forma, y cada uno de estos cuenta con una lección y un test relacionado.
+
+El test tiene un mecanismo de preguntas y respuestas, un formulario donde se debe seleccionar la opción correcta y 

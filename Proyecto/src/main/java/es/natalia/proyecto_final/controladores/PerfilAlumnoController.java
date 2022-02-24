@@ -12,7 +12,6 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Optional;
 
 @Slf4j
 @Path("/perfil")
@@ -40,12 +39,22 @@ public class PerfilAlumnoController {
     @GET
     public String index() {
         HttpSession session = request.getSession();
-        Long id = convertToLong(session.getAttribute("id"));
 
-        Alumno alumno = alumnoService.buscarPorId(id);
+        try {
+            if (session.getAttribute("iniciada").equals(true)) {
+                Long id = convertToLong(session.getAttribute("id"));
 
-        models.put("alumno", alumno);
-        return "usuarios/perfil-alumno";
+                Alumno alumno = alumnoService.buscarPorId(id);
+
+                models.put("alumno", alumno);
+                return "usuarios/perfil-alumno";
+            }
+        }catch (NullPointerException e){
+            // Si no hay una sesión, se permite el acceso a crear una
+            return "redirect:login";
+        }
+
+        return "redirect:login";
     }
 
     @Path("/desconectar")

@@ -31,6 +31,19 @@ public class LoginController {
     @Path("/")
     @GET
     public String index() {
+
+        // Controlamos que haya una sesión activa. Si la hay, no se puede acceder a esta pantalla ya que causará errores.
+        HttpSession session = request.getSession();
+        try {
+            if (session.getAttribute("iniciada").equals(true)) {
+                // Redirección a la pantalla principal
+                return "redirect:portada";
+            }
+        }catch (NullPointerException e){
+            // Si no hay una sesión, se permite el acceso a crear una
+            return "sesion/login";
+        }
+
         return "sesion/login";
     }
 
@@ -45,6 +58,7 @@ public class LoginController {
             if(alumno != null){
                 if(alumno.getContrasena().equals(contrasena)){
                         HttpSession session = request.getSession();
+                        session.setAttribute("iniciada", true);
                         session.setAttribute("alumno", alumno.getCodigoAlumno());
                         session.setAttribute("id", alumno.getId());
 
