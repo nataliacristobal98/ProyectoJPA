@@ -39,10 +39,12 @@ Una vez iniciada la sesión, se podrá acceder al perfil de usuario, donde se es
 
 En esta, también se podrá consultar el código de alumno para el inicio de las sesiones, los nuevos usuarios serán redirigidos directamente a esta pantalla para que vean dicho código.
 
-#### 3.2. Control de mundos
+#### 3.2. Control de mundos y niveles
 
 Una vez inicias sesión con una cuenta, podrás acceder a la pantalla de mundos. Estos se cargarán en función de si están desbloqueados con el usuario que está conectado.
 
 Se podrá seleccionar nivel de la misma forma, y cada uno de estos cuenta con una lección y un test relacionado.
 
-El test tiene un mecanismo de preguntas y respuestas, un formulario donde se debe seleccionar la opción correcta y 
+El test tiene un mecanismo de preguntas y respuestas, un formulario donde se debe seleccionar la opción correcta y se anotará los puntos obtenidos tanto en el perfil de jugador como en la BD. 
+
+Estos puntos desbloquearán los siguientes niveles y mundos mediante consultas entre sí.
