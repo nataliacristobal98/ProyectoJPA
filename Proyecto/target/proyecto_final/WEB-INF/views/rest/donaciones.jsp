@@ -1,14 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en" class="h-100">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>4 - Niveles</title>
+    <title>Donaciones</title>
 
-    <!-- Bootstrap, JQUERY-->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js.js"></script>
@@ -50,35 +50,9 @@
         </div>
     </header>
 
-    <main>
-        <div class="row mb-3 text-center">
+    <main class="px-3 text-center">
 
-                <c:forEach var="nivel" items="${niveles}">
-                    <div class="col">
-                        <div class="card mb-4 rounded-3 shadow-sm">
-                            <div class="card-header py-3">
-                                <h4 class="my-0 fw-normal">Nivel ${nivel.id}</h4>
-                                <h3>${nivel.dificultad}</h3>
-                            </div>
-                            <div class="card-body">
-                                <c:choose>
-                                    <c:when test="${nivel.desbloqueado == true}">
-                                        <a href="${mvc.basePath}/niveles/nivel/${nivel.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <button type="button" class="w-50 btn btn-lg btn-danger" disabled="disabled">Jugar</button>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
 
-        </div>
-
-        <div class="lead text-center">
-            <a href="${mvc.basePath}/mundos/mundo" type="button" class="w-25 btn btn-lg btn-danger">Volver a Mundos</a>
-        </div>
     </main>
 
     <footer class="mt-auto text-center">

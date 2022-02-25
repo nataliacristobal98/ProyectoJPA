@@ -61,7 +61,7 @@
                             <h3>${leccion.contenido}</h3>
                         </div>
                         <div class="card-body">
-                                    <a href="#" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
+                                    <a href="#" type="button" class="w-50 btn btn-lg btn-danger">Estudiar Lección</a>
                         </div>
                     </div>
                 </div>
