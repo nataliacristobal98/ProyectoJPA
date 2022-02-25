@@ -21,7 +21,7 @@ public class Pregunta {
     @Column(name = "codigo_pr", nullable = false, unique = true, length = 6)
     private String codigoPregunta;
 
-    @Column(name = "texto_pregunta", nullable = false)
+    @Column(name = "texto_pregunta", nullable = false, length = 300)
     private String textoPregunta;
 
     // Imagen: Puede que haya preguntas con imagenes complementarias

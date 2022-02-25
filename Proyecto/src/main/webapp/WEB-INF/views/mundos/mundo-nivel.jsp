@@ -66,7 +66,7 @@
                                         <a href="${mvc.basePath}/niveles/nivel/${nivel.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <button type="button" class="w-100 btn btn-lg btn-danger" disabled="disabled">Jugar</button>
+                                        <button type="button" class="w-50 btn btn-lg btn-danger" disabled="disabled">Jugar</button>
                                     </c:otherwise>
                                 </c:choose>
                             </div>

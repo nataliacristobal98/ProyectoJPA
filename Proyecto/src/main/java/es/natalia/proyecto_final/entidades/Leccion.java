@@ -18,7 +18,7 @@ public class Leccion {
     @Column(name = "codigo_lec", nullable = false, unique = true, length = 4)
     private String codigoLeccion;
 
-    @Column(name = "contenido", nullable = false)
+    @Column(name = "contenido", nullable = false, length = 300)
     private String contenido;
 
     @Column(name = "terminado", nullable = false)

@@ -72,8 +72,8 @@
                                 <c:choose>
                                     <c:when test="${respuesta.pregunta.id == pregunta.id}">
                                             <div class="col-5 card-header m-2 rounded-3">
-                                                <div class="form-check" id="${pregunta.id}">
-                                                    <input class="form-check-input" type="radio" value="${respuesta.correcta}" name="${pregunta.codigoPregunta}" id="${pregunta.codigoPregunta}" required>
+                                                <div class="form-check" id="${respuesta.id}">
+                                                    <input class="form-check-input" type="radio" value="${respuesta.correcta}" name="${pregunta.codigoPregunta}" id="${respuesta.id}" required>
                                                     <label class="form-check-label" for="${pregunta.codigoPregunta}">
                                                             ${respuesta.textoRespuesta}
                                                     </label>
@@ -116,16 +116,5 @@
 
 
 </body>
-
-<script>
-    var botones;
-    foreach(${preguntas}:pregunta){
-
-    }
-    console.log("hola")
-
-    $('input[name=nombreRadio]:checked', '#formulario').val();
-    console.log()
-</script>
 
 </html>

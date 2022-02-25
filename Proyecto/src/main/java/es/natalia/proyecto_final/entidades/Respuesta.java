@@ -18,7 +18,7 @@ public class Respuesta {
     @Column(name = "codigo", nullable = false, unique = true, length = 6)
     private String codigo;
 
-    @Column(name = "texto_respuesta", nullable = false)
+    @Column(name = "texto_respuesta", nullable = false, length = 300)
     private String textoRespuesta;
 
     // Correcta: Si la respuesta en cuestión es correcta o no a su pregunta asociada
