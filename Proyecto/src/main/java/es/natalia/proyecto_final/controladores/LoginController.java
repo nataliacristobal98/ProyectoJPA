@@ -1,10 +1,12 @@
 package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.Alumno;
+import es.natalia.proyecto_final.entidades.Mundo;
 import es.natalia.proyecto_final.servicios.AlumnoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
+import jakarta.mvc.Models;
 import jakarta.persistence.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -14,6 +16,9 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Slf4j
 @Path("/login")
@@ -22,11 +27,13 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginController {
 
     @Inject
-    AlumnoService alumnoService;
-
-    // Crear la sesión para el control de datos
-    @Inject
     HttpServletRequest request;
+
+    @Inject
+    private Models models;
+
+    @Inject
+    AlumnoService alumnoService;
 
     @Path("/")
     @GET

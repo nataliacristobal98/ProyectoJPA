@@ -62,7 +62,7 @@
                             </div>
                             <div class="card-body">
                                 <c:choose>
-                                    <c:when test="${nivel.desbloqueado == true}">
+                                    <c:when test="${alumno.puntos >= nivel.puntosDesbloqueo}">
                                         <a href="${mvc.basePath}/niveles/nivel/${nivel.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
                                     </c:when>
                                     <c:otherwise>

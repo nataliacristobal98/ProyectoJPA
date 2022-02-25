@@ -2,6 +2,7 @@ package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.*;
 import es.natalia.proyecto_final.servicios.AlumnoService;
+import es.natalia.proyecto_final.servicios.MundoService;
 import es.natalia.proyecto_final.servicios.NivelService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -12,9 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.*;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Slf4j
 @Path("/niveles/nivel")
@@ -23,16 +22,20 @@ import java.util.Set;
 public class NivelesController {
 
     @Inject
-    private Models models;
+    HttpServletRequest request;
 
     @Inject
-    NivelService nivelService;
+    private Models models;
 
     @Inject
     AlumnoService alumnoService;
 
     @Inject
-    HttpServletRequest request;
+    MundoService mundoService;
+
+    @Inject
+    NivelService nivelService;
+
 
     // Menú de Nivel -> Con su Lección y su Test correspondiente
     @GET
@@ -82,6 +85,10 @@ public class NivelesController {
         HttpSession session = request.getSession();
         Alumno alumno = alumnoService.buscarPorId(Long.parseLong(session.getAttribute("id").toString()));
 
+        // Para saber si se supera el Test, y por tanto obtener los puntos, se comprueba si está superado
+
+
+
         for (String respuestaSelect:respuestas) {
             Respuesta respuesta = nivelService.buscarIdRespuesta(Long.parseLong(respuestaSelect));
 
@@ -89,9 +96,26 @@ public class NivelesController {
                 alumno.setPuntos(alumno.getPuntos()+1);
             }
 
+            // Comprobamos que con los puntos obtenidos es suficiente para desbloquear los siguientes mundos
+            /*List<Mundo> mundos = mundoService.findAll();
+            for (Mundo mundo: mundos) {
+                if(alumno.getPuntos() >= mundo.getPuntosDesbloqueo()){
+                    alumno.getMundos().add(mundo);
+                }
+            }*/
+
         }
         alumnoService.guardar(alumno);
 
-        return "redirect:portada";
+        return "redirect:niveles/nivel/testSuperado";
     }
+
+    @GET
+    @Path("/testSuperado")
+    public String superado() {
+
+
+        return "niveles/nivel-final";
+    }
+
 }

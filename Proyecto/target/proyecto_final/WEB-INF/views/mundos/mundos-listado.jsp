@@ -65,7 +65,7 @@
                                     <h1 class="card-title pricing-card-title">${mundo.tematica} ${mund.tematica}</h1>
 
                                     <c:choose>
-                                        <c:when test="${mundo.desbloqueado == true}">
+                                        <c:when test="${alumno.puntos >= mundo.puntosDesbloqueo}">
                                             <a href="${mvc.basePath}/mundos/mundo/${mundo.id}" type="button" class="w-50 btn btn-lg btn-danger">Jugar</a>
                                         </c:when>
                                         <c:otherwise>

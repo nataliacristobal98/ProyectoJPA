@@ -155,6 +155,7 @@
             data: {respuestas:respuestasSelect},
             success: function (result){
                 console.log("ok")
+                window.location.href = "${mvc.basePath}/niveles/nivel/testSuperado";
             },
             error: function (result){
                 console.log("error")
