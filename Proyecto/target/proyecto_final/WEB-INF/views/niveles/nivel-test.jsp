@@ -54,37 +54,53 @@
     <main>
         <div class="col-12 mt-3">
 
+            <%
+                int cont = 0;
+
+            %>
+
 
             <div class="card mb-4 rounded-3 shadow-sm">
 
                 <div class="card-body">
                     <h3>Test</h3>
 
-                    <form action="" method="post" id="formulario">
+                    <form method="post" id="formulario" onsubmit="recogerValores(event)">
                     <c:forEach var="pregunta" items="${preguntas}">
+
+                        <p id="preguntas" style="display: none">${totalPreguntas}</p>
+
                         <div class="card-header rounded-3 py-3">
                             <h3 class="my-0 fw-normal text-center">${pregunta.textoPregunta}</h3>
                         </div>
                         <div class="card-body">
+
+
 
                             <div class="row m-3 justify-content-center">
                             <c:forEach var="respuesta" items="${respuestas}">
                                 <c:choose>
                                     <c:when test="${respuesta.pregunta.id == pregunta.id}">
                                             <div class="col-5 card-header m-2 rounded-3">
+
+
+
                                                 <div class="form-check" id="${respuesta.id}">
-                                                    <input class="form-check-input" type="radio" value="${respuesta.correcta}" name="${pregunta.codigoPregunta}" id="${respuesta.id}" required>
-                                                    <label class="form-check-label" for="${pregunta.codigoPregunta}">
+                                                    <input class="form-check-input" type="radio" name="grupo<%=cont%>" value="${respuesta.id}" id="${respuesta.id}" required>
+                                                    <label class="form-check-label" for="grupo<%=cont%>">
                                                             ${respuesta.textoRespuesta}
                                                     </label>
                                                 </div>
+
                                             </div>
                                     </c:when>
                                 </c:choose>
                             </c:forEach>
                             </div>
 
-
+                            <%
+                            cont++;
+                            %>
 
                         </div>
                     </c:forEach>
@@ -116,5 +132,36 @@
 
 
 </body>
+
+<script>
+
+    function recogerValores(event){
+
+        event.preventDefault();
+        var preguntas = parseInt(document.getElementById("preguntas").textContent);
+
+        var respuestasSelect = [];
+
+        for (let i = 0; i <= preguntas -1; i++) {
+            var boton = document.querySelector(`input[name="grupo`+CSS.escape(i)+`"]:checked`).value;
+            console.log(boton)
+            respuestasSelect.push(boton);
+
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "${mvc.basePath}/niveles/nivel/resultTest",
+            data: {respuestas:respuestasSelect},
+            success: function (result){
+                console.log("ok")
+            },
+            error: function (result){
+                console.log("error")
+            }
+        })
+    }
+
+</script>
 
 </html>

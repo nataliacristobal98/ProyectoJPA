@@ -70,7 +70,7 @@
       </div>
       <div class="text-start">
         <p class="mt-3 mb-0">Icono:</p>
-        <div class="form-check" id="icono" name="icono">
+        <div class="form-check" id="icono">
           <input type="image" src="${pageContext.request.contextPath}/resources/img/icono1.jpg" height="80" width="80"/>
           <input type="image" src="${pageContext.request.contextPath}/resources/img/icono2.jpg" height="80" width="80"/>
           <input type="image" src="${pageContext.request.contextPath}/resources/img/icono3.jpg" height="80" width="80"/>
