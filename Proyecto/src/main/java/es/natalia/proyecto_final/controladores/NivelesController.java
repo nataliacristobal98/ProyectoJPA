@@ -1,11 +1,14 @@
 package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.*;
+import es.natalia.proyecto_final.servicios.AlumnoService;
 import es.natalia.proyecto_final.servicios.NivelService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +26,12 @@ public class NivelesController {
 
     @Inject
     NivelService nivelService;
+
+    @Inject
+    AlumnoService alumnoService;
+
+    @Inject
+    HttpServletRequest request;
 
     // Menú de Nivel -> Con su Lección y su Test correspondiente
     @GET
@@ -55,19 +64,33 @@ public class NivelesController {
         List<Respuesta> respuestas = nivelService.buscarRespuestas();
 
 
+
         models.put("nivel", nivel);
         models.put("test", test);
         models.put("preguntas", preguntas);
+        models.put("totalPreguntas", preguntas.size());
         models.put("respuestas", respuestas);
         return "niveles/nivel-test";
     }
 
     @POST
     @Path("/resultTest")
-    public String resultadosTest(@FormParam(value="name") String nombre) {
+        public String resultadosTest(@FormParam(value="respuestas[]") List<String> respuestas) {
 
+        System.out.println("Resultados Formulario: " + respuestas.toString());
+        HttpSession session = request.getSession();
+        Alumno alumno = alumnoService.buscarPorId(Long.parseLong(session.getAttribute("id").toString()));
 
+        for (String respuestaSelect:respuestas) {
+            Respuesta respuesta = nivelService.buscarIdRespuesta(Long.parseLong(respuestaSelect));
 
-        return "niveles/nivel-test";
+            if(respuesta.getCorrecta()){
+                alumno.setPuntos(alumno.getPuntos()+1);
+            }
+
+        }
+        alumnoService.guardar(alumno);
+
+        return "redirect:portada";
     }
 }

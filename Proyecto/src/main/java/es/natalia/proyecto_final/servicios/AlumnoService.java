@@ -22,7 +22,10 @@ public class AlumnoService {
         return alumnoRepository.findBy(id);
     }
 
-    public void guardar(Alumno alumno){alumnoRepository.save(alumno);}
+    public void guardar(Alumno alumno){
+        alumnoRepository.save(alumno);
+        // Comprobar puntos y desbloqueos
+    }
 
     public Alumno buscarAlumno(String codigo){return alumnoRepository.findByCodigoAlumno(codigo);}
 }

@@ -49,5 +49,5 @@ public class NivelService {
         return respuestaRepository.findAll();
     }
     public List<Respuesta> buscarRespuestasPorPregunta(Pregunta pregunta) {return respuestaRepository.findByPregunta(pregunta);}
-
+    public Respuesta buscarIdRespuesta(Long id){return respuestaRepository.findBy(id);}
 }
