@@ -6,7 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>2 - Login</title>
+    <title>Inicia Sesión</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/logo.png">
 
     <!-- Bootstrap, JQUERY-->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
