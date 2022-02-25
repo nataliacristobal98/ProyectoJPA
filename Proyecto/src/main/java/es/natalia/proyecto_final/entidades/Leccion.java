@@ -21,9 +21,6 @@ public class Leccion {
     @Column(name = "contenido", nullable = false, length = 300)
     private String contenido;
 
-    @Column(name = "terminado", nullable = false)
-    private Boolean terminado = false;
-
 
     // Nivel al que pertence la lección
     @OneToOne(mappedBy = "leccion", optional = false, orphanRemoval = true)

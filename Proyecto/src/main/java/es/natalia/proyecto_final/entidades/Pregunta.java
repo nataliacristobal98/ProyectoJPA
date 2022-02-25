@@ -18,7 +18,7 @@ public class Pregunta {
     private Long id;
 
     // Código pregunta: El código resultante del nivel + PR (_PR01)
-    @Column(name = "codigo_pr", nullable = false, unique = true, length = 6)
+    @Column(name = "codigo_pregunta", nullable = false, unique = true, length = 6)
     private String codigoPregunta;
 
     @Column(name = "texto_pregunta", nullable = false, length = 300)
@@ -28,8 +28,6 @@ public class Pregunta {
     @Column(name = "imagen_pregunta")
     private String imagenPregunta;
 
-    @Column(name = "acertada")
-    private Boolean acertada;
 
 
     // Test al que pertenece la pregunta

@@ -29,15 +29,9 @@ public class Nivel {
     @Column(name = "puntuacion_min", nullable = false)
     private Integer puntuacionMinima;
 
-    // Puntuación obtenida por el usuario -> Total de preguntas acertadas
-    @Column(name = "puntuacion")
-    private Integer puntuacionObtenida;
-
-    @Column(name = "desbloqueado", nullable = false)
-    private Boolean desbloqueado = false;
-
-    @Column(name = "terminado", nullable = false)
-    private Boolean terminado = false;
+    // Puntos necesarios que tiene que tener el usuario para acceder al nivel
+    @Column(name = "puntos_desbloqueo", nullable = false)
+    private Integer puntosDesbloqueo;
 
 
     // Al mundo al que pertenece cada nivel

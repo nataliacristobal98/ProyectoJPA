@@ -30,15 +30,9 @@ public class Mundo {
     @Column(name = "dificultad", nullable = false)
     private Integer dificultad;
 
-    @Column(name = "desbloqueado", nullable = false)
-    private Boolean desbloqueado = false;
-
     // Puntos necesarios que tiene que tener el usuario para acceder al mundo
     @Column(name = "puntos_desbloqueo", nullable = false)
     private Integer puntosDesbloqueo;
-
-    @Column(name = "terminado", nullable = false)
-    private Boolean terminado = false;
 
 
     // Conjunto de niveles que componen al mundo
