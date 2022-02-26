@@ -100,3 +100,6 @@ El test tiene un mecanismo de preguntas y respuestas, un formulario donde se deb
 Estos puntos desbloquearán los siguientes niveles y mundos mediante consultas entre sí, ya que cada mundo y nivel tiene un campo de puntos para el desbloqueo.
 
 Podemos comprobar que si salimos de la sesión en la que estemos e iniciamos con otra los desbloqueos corresponden con los puntos que tenemos en cada cuenta.
+
+Como extra, he implementado dos servicios REST que mostraran la información de Test y Pregunta. El de pregunta es totalmente funcional, y lo podemos visualizar cuando clickamos en el icono que se encuentra al lado de cada pregunta.
+Sin embargo, el servicio de test produce fallos al tener un Set y no un List de preguntas. De todas maneras, lo he querido dejar en el proyecto como muestra de ejemplo.
