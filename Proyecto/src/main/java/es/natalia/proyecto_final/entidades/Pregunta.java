@@ -1,5 +1,8 @@
 package es.natalia.proyecto_final.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -31,12 +34,16 @@ public class Pregunta {
 
 
     // Test al que pertenece la pregunta
+    //@JsonBackReference
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
 
     // Listado de respuestas que tiene la pregunta, serían un conjuto de 4 de las cuales solo una sería correcta
+    //@JsonIgnore
     @OneToMany(mappedBy = "pregunta", orphanRemoval = true)
+    @JsonManagedReference
     private List<Respuesta> respuestas = new ArrayList<>();
 
 

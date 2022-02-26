@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface TestRepository extends EntityRepository<Test, Long> {
 
     Test findByNivel(Nivel nivel);
+
+
 }

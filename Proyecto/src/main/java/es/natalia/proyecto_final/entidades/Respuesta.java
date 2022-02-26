@@ -1,5 +1,7 @@
 package es.natalia.proyecto_final.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,6 +31,7 @@ public class Respuesta {
     // La pregunta a la que pertenece la respuesta
     @ManyToOne(optional = false)
     @JoinColumn(name = "pregunta_id", nullable = false)
+    @JsonBackReference
     private Pregunta pregunta;
 
 }

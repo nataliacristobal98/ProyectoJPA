@@ -1,5 +1,7 @@
 package es.natalia.proyecto_final.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,10 +27,13 @@ public class Test {
 
     // Nivel al que pertenece el test
     @OneToOne(mappedBy = "test", optional = false, orphanRemoval = true)
+    //@JsonIgnore
     private Nivel nivel;
 
     // Listado de preguntas que tiene cada test
     @OneToMany(mappedBy = "test", orphanRemoval = true)
+    //@JsonIgnore
+    //@JsonManagedReference
     private Set<Pregunta> preguntas = new LinkedHashSet<>();
 
 
