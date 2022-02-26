@@ -7,7 +7,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>1 - Portada</title>
+    <title>Bienvenido</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/logo.png">
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
