@@ -30,7 +30,7 @@ Primero, mediante la herramienta de DBeaver conectaremos con la BD.
 
 Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos MySQL para crear la BD.
 
-![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/nataliacristobal98/ProyectoJPA/master/capturas/BD1.png)
+![imagen](Capturas/BD21.png)
 
  Introduciremos los datos necesario:
 
@@ -40,11 +40,11 @@ Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos
 
  - Usuario y contraseña: natalia
 
-![imagen](capturas/BD2.png)
+![imagen](Capturas/BD2.png)
 
 Probamos la conexión para crear y finalizamos. Se habrá creado la conexión a la BD para el proyecto.
 
-![imagen](capturas/BD3.png)
+![imagen](Capturas/BD3.png)
 
  - **Configuración de Wildfly:**
 
