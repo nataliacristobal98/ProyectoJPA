@@ -30,8 +30,6 @@ public class NivelesController {
     @Inject
     AlumnoService alumnoService;
 
-    @Inject
-    MundoService mundoService;
 
     @Inject
     NivelService nivelService;
@@ -44,16 +42,14 @@ public class NivelesController {
 
         Nivel nivel = nivelService.buscarPorId(id);
 
+        Test test = nivelService.buscarTest(nivel);
+        Leccion leccion = nivelService.buscarLeccion(nivel);
 
-            Test test = nivelService.buscarTest(nivel);
-            Leccion leccion = nivelService.buscarLeccion(nivel);
-
-
-            models.put("mundo", nivel.getMundo().getId());
-            models.put("nivel", nivel);
-            models.put("leccion", leccion);
-            models.put("test", test);
-            return "niveles/nivel-menu";
+        models.put("mundo", nivel.getMundo().getId());
+        models.put("nivel", nivel);
+        models.put("leccion", leccion);
+        models.put("test", test);
+        return "niveles/nivel-menu";
     }
 
     @GET
@@ -62,12 +58,11 @@ public class NivelesController {
 
         Nivel nivel = nivelService.buscarPorId(idN);
 
+        // Obtenemos el Test y sus Preguntas y Respuestas asociadas
         Test test = nivelService.buscarPorIdTest(idT);
         List<Pregunta> preguntas = nivelService.buscarPreguntas(test);
 
         List<Respuesta> respuestas = nivelService.buscarRespuestas();
-
-
 
         models.put("nivel", nivel);
         models.put("test", test);
@@ -79,21 +74,22 @@ public class NivelesController {
 
     @POST
     @Path("/resultTest")
-        public String resultadosTest(@FormParam(value="respuestas[]") List<String> respuestas) {
+    public String resultadosTest(@FormParam(value = "respuestas[]") List<String> respuestas) {
 
+        // Obtenemos todas las respuestas mediante AJAX
         System.out.println("Resultados Formulario: " + respuestas.toString());
+
+        // Para incluir los puntos al Alumno en cuestión lo buscamos en la sesión
         HttpSession session = request.getSession();
         Alumno alumno = alumnoService.buscarPorId(Long.parseLong(session.getAttribute("id").toString()));
 
         // Para saber si se supera el Test, y por tanto obtener los puntos, se comprueba si está superado
-
-
-
-        for (String respuestaSelect:respuestas) {
+        for (String respuestaSelect : respuestas) {
             Respuesta respuesta = nivelService.buscarIdRespuesta(Long.parseLong(respuestaSelect));
 
-            if(respuesta.getCorrecta()){
-                alumno.setPuntos(alumno.getPuntos()+1);
+            // Añadimos los puntos al Alumno
+            if (respuesta.getCorrecta()) {
+                alumno.setPuntos(alumno.getPuntos() + 1);
             }
 
             // Comprobamos que con los puntos obtenidos es suficiente para desbloquear los siguientes mundos
@@ -105,16 +101,15 @@ public class NivelesController {
             }*/
 
         }
+        // Actualizamos el Alumno
         alumnoService.guardar(alumno);
-
         return "redirect:niveles/nivel/testSuperado";
     }
 
+    // Página final del Test
     @GET
     @Path("/testSuperado")
     public String superado() {
-
-
         return "niveles/nivel-final";
     }
 

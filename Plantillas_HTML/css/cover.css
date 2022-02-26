@@ -22,3 +22,13 @@
 .nav-masthead .active {
   border-bottom-color: rgb(255, 0, 0);
 }
+
+.a{
+  background-color: blueviolet;
+  color: aliceblue;
+}
+
+.button{
+  background-color: blueviolet;
+  color: aliceblue;
+}

@@ -46,22 +46,20 @@ public class MundoController {
     @GET
     @Path("/")
     public String index() {
-
+        // Comprobamos que haya una sesión iniciada, ya que si no existe ninguna no se podría acceder a esta parte de la web
         HttpSession session = request.getSession();
         try {
             if (session.getAttribute("iniciada").equals(true)) {
-
                 // Obtenemos el alumno que está activo
                 Alumno alumno = alumnoService.buscarPorId(Long.parseLong(session.getAttribute("id").toString()));
-
 
                 // Llamamos al método findAll() para el listado de Mundos disponibles en la BD
                 models.put("alumno", alumno);
                 models.put("mundos", mundoService.findAll());
                 return "mundos/mundos-listado";
             }
-        }catch (NullPointerException e){
-            // Si no hay una sesión, se permite el acceso a crear una
+        } catch (NullPointerException e) {
+            // Si no hay una sesión, se permite el acceso o crear una.
             return "sesion/login";
         }
         return "sesion/login";
@@ -81,7 +79,6 @@ public class MundoController {
             // Si el Mundo existe, se hará la busqueda de Niveles pertinente, para ello llamamos al método correspondiente
             List<Nivel> niveles = nivelService.buscarNiveles(mundo.get());
 
-            //
             models.put("mundo", mundo.get());
             models.put("alumno", alumno);
             // Mandamos los datos de los Niveles para usarlos en la pantalla

@@ -28,21 +28,15 @@ public class PerfilAlumnoController {
     @Inject
     HttpServletRequest request;
 
-    public static Long convertToLong(Object o){
-        String stringToConvert = String.valueOf(o);
-        Long convertedLong = Long.parseLong(stringToConvert);
-        return convertedLong;
-
-    }
-
     @Path("/")
     @GET
     public String index() {
-        HttpSession session = request.getSession();
 
+        // Comprobamos que la sesión esté activa para así recoger los datos del Alumno y mostrarlos
+        HttpSession session = request.getSession();
         try {
             if (session.getAttribute("iniciada").equals(true)) {
-                Long id = convertToLong(session.getAttribute("id"));
+                Long id = Long.parseLong(session.getAttribute("id").toString());
 
                 Alumno alumno = alumnoService.buscarPorId(id);
 
@@ -50,7 +44,7 @@ public class PerfilAlumnoController {
                 return "usuarios/perfil-alumno";
             }
         }catch (NullPointerException e){
-            // Si no hay una sesión, se permite el acceso a crear una
+            // Si no hay una sesión, se permite el acceso o crear una.
             return "redirect:login";
         }
 
@@ -60,7 +54,7 @@ public class PerfilAlumnoController {
     @Path("/desconectar")
     @GET
     public String desconectar(){
-
+        // Destruimos la sesión para permitir usar otras cuentas
         HttpSession session = request.getSession();
         session.invalidate();
 

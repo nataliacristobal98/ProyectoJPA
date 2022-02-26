@@ -42,12 +42,11 @@ public class SignupController {
     @Path("/")
     @GET
     public String registro() {
-
+        // Mandamos una lista de los Profesores disponibles para su selección
         List<Profesor> profesores = profesorService.findAll();
-
         try {
             models.put("profesores", profesores);
-        }catch (NoResultException e){
+        } catch (NoResultException e) {
             System.out.println(e);
             return "sesion/signup";
         }
@@ -59,46 +58,38 @@ public class SignupController {
                 // Redirección a la pantalla principal
                 return "redirect:portada";
             }
-        }catch (NullPointerException e){
-            // Si no hay una sesión, se permite el acceso a crear una
+        } catch (NullPointerException e) {
+            // Si no hay una sesión, se permite el acceso o crear una.
             return "sesion/signup";
         }
-
-
-
-
         return "sesion/signup";
     }
 
     @POST
     @Path("/signup")
-    public String registroHecho(@FormParam(value="nombre") String nombre, @FormParam(value="contrasena") String contrasena, @FormParam(value="icono") String icono, @FormParam(value="profesor") String profesor) {
+    public String registroHecho(@FormParam(value = "nombre") String nombre, @FormParam(value = "contrasena") String contrasena, @FormParam(value = "icono") String icono, @FormParam(value = "profesor") String profesor) {
 
-        //System.out.println(profesor);
-        try{
+        // Creamos al Alumno nuevo en base a los datos mandados
+        try {
             Profesor profesorEncontrado = profesorService.findById(Long.parseLong(profesor));
-            // initialize a Random object somewhere; you should only need one
+
+            // Generamos un código random para el alumno junto a la inicial del Profesor asignado
             Random random = new Random();
-
-            // generate a random integer from 0 to 899, then add 100
             int x = random.nextInt(900) + 100;
-
             String codigoAlumnoNuevo = profesorEncontrado.getCodigoProfesor() + x;
 
+            // Guardamos el Alumno nuevo
             Alumno alumnoNuevo = new Alumno(nombre, contrasena, icono, codigoAlumnoNuevo, profesorEncontrado);
-
             alumnoService.guardar(alumnoNuevo);
 
-
+            // Iniciamos la sesión
             HttpSession session = request.getSession();
             session.setAttribute("iniciada", true);
             session.setAttribute("alumno", alumnoNuevo.getCodigoAlumno());
             session.setAttribute("id", alumnoNuevo.getId());
-
             return "redirect:perfil";
 
-        }catch (NoResultException e){
-            // Codigo si usuario está mal
+        } catch (NoResultException e) {
             System.out.println(e);
             return "redirect:perfil";
         }

@@ -30,15 +30,11 @@ public class LoginController {
     HttpServletRequest request;
 
     @Inject
-    private Models models;
-
-    @Inject
     AlumnoService alumnoService;
 
     @Path("/")
     @GET
     public String index() {
-
         // Controlamos que haya una sesión activa. Si la hay, no se puede acceder a esta pantalla ya que causará errores.
         HttpSession session = request.getSession();
         try {
@@ -46,44 +42,42 @@ public class LoginController {
                 // Redirección a la pantalla principal
                 return "redirect:portada";
             }
-        }catch (NullPointerException e){
-            // Si no hay una sesión, se permite el acceso a crear una
+        } catch (NullPointerException e) {
+            // Si no hay una sesión, se permite el acceso o crear una.
             return "sesion/login";
         }
-
         return "sesion/login";
     }
 
     @POST
     @Path("/login")
-    public String index(@FormParam(value="codigo") String codigo, @FormParam(value="contrasena") String contrasena) {
+    public String index(@FormParam(value = "codigo") String codigo, @FormParam(value = "contrasena") String contrasena) {
         System.out.println(codigo + "/" + contrasena);
 
-        try{
+        try {
+            // Comprobamos que el alumno existe, para ello obtenemos el código introducido.
             Alumno alumno = alumnoService.buscarAlumno(codigo);
 
-            if(alumno != null){
-                if(alumno.getContrasena().equals(contrasena)){
-                        HttpSession session = request.getSession();
-                        session.setAttribute("iniciada", true);
-                        session.setAttribute("alumno", alumno.getCodigoAlumno());
-                        session.setAttribute("id", alumno.getId());
+            if (alumno != null) {
+                // Si el código existe comprobamos la contraseña
+                if (alumno.getContrasena().equals(contrasena)) {
 
-                        System.out.println(session.getAttribute("alumno"));
+                    // Si ambos parámetros son correctos iniciamos la sesión
+                    HttpSession session = request.getSession();
+                    session.setAttribute("iniciada", true);
+                    session.setAttribute("alumno", alumno.getCodigoAlumno());
+                    session.setAttribute("id", alumno.getId());
 
                     // Redirect porque es otro controller
                     return "redirect:mundos/mundo";
-                }else{
-                    // Codigo error contraseña
+                } else {
                     return "sesion/login";
                 }
             }
-        }catch (NoResultException e){
-            // Codigo si usuario está mal
+        } catch (NoResultException e) {
             System.out.println(e);
             return "sesion/login";
         }
-
         return "sesion/login";
     }
 
