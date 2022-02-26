@@ -30,7 +30,7 @@ Primero, mediante la herramienta de DBeaver conectaremos con la BD.
 
 Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos MySQL para crear la BD.
 
-![imagen](capturas/BD1.png)
+https://raw.githubusercontent.com/nataliacristobal98/ProyectoJPA/master/Capturas/BD1.png
 
  Introduciremos los datos necesario:
 
