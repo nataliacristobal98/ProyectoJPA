@@ -26,6 +26,10 @@ public class Alumno {
         this.profesor = profesor;
     }
 
+    public void setMundos(Mundo mundo) {
+        this.mundos.add(mundo);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

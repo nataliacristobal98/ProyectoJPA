@@ -68,7 +68,7 @@ public class SignupController {
     @POST
     @Path("/signup")
     public String registroHecho(@FormParam(value = "nombre") String nombre, @FormParam(value = "contrasena") String contrasena, @FormParam(value = "icono") String icono, @FormParam(value = "profesor") String profesor) {
-
+        System.out.println(icono);
         // Creamos al Alumno nuevo en base a los datos mandados
         try {
             Profesor profesorEncontrado = profesorService.findById(Long.parseLong(profesor));

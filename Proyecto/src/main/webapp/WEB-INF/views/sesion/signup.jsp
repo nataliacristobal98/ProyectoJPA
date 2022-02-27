@@ -70,9 +70,10 @@
       <div class="text-start">
         <p class="mt-3 mb-0">Icono:</p>
         <div class="form-check" id="icono">
-          <input type="image" src="${pageContext.request.contextPath}/resources/img/icono1.jpg" height="80" width="80"/>
-          <input type="image" src="${pageContext.request.contextPath}/resources/img/icono2.jpg" height="80" width="80"/>
-          <input type="image" src="${pageContext.request.contextPath}/resources/img/icono3.jpg" height="80" width="80"/>
+          <input type="image" name="icono" value="icono1" onclick="imagen(event)" src="${pageContext.request.contextPath}/resources/img/icono1.jpg" height="80" width="80"/>
+          <span><input type="radio" name="icono" value="icono1"></span>
+          <input type="image" name="icono" value="icono2" onclick="imagen(event)" src="${pageContext.request.contextPath}/resources/img/icono2.jpg" height="80" width="80"/>
+          <input type="image" name="icono" value="icono3" onclick="imagen(event)" src="${pageContext.request.contextPath}/resources/img/icono3.jpg" height="80" width="80"/>
         </div>
       </div>
 
@@ -112,5 +113,10 @@
 
 <!--JavaScript-->
 <script src="${pageContext.request.contextPath}/resources/js/form.js"></script>
+<script>
+  function imagen(event){
+    event.preventDefault();
+  }
+</script>
 
 </html>

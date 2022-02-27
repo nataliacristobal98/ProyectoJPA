@@ -82,6 +82,7 @@ public class NivelesController {
         // Para incluir los puntos al Alumno en cuestión lo buscamos en la sesión
         HttpSession session = request.getSession();
         Alumno alumno = alumnoService.buscarPorId(Long.parseLong(session.getAttribute("id").toString()));
+        Integer puntos = 0;
 
         // Para saber si se supera el Test, y por tanto obtener los puntos, se comprueba si está superado
         for (String respuestaSelect : respuestas) {
@@ -89,20 +90,19 @@ public class NivelesController {
 
             // Añadimos los puntos al Alumno
             if (respuesta.getCorrecta()) {
-                alumno.setPuntos(alumno.getPuntos() + 1);
+                puntos++;
             }
 
-            // Comprobamos que con los puntos obtenidos es suficiente para desbloquear los siguientes mundos
-            /*List<Mundo> mundos = mundoService.findAll();
-            for (Mundo mundo: mundos) {
-                if(alumno.getPuntos() >= mundo.getPuntosDesbloqueo()){
-                    alumno.getMundos().add(mundo);
-                }
-            }*/
-
         }
-        // Actualizamos el Alumno
-        alumnoService.guardar(alumno);
+
+        if(puntos>=5){
+            alumno.setPuntos(alumno.getPuntos()+puntos);
+            alumnoService.guardar(alumno);
+            session.setAttribute("puntosGanados", alumno.getPuntos());
+        }else{
+            session.setAttribute("puntosGanados", 0);
+        }
+
         return "redirect:niveles/nivel/testSuperado";
     }
 
@@ -110,6 +110,11 @@ public class NivelesController {
     @GET
     @Path("/testSuperado")
     public String superado() {
+        System.out.println("ok, test superado");
+        HttpSession session = request.getSession();
+
+        System.out.println(session.getAttribute("puntosGanados"));
+
         return "niveles/nivel-final";
     }
 
