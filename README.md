@@ -11,18 +11,23 @@ Mi propuesta para este proyecto sería crear una web con temática interactiva d
 
 ## 2. Despliegue del proyecto
 
-En la carpeta **Despliegue_Wildfly** se encuentra los archivos necesarios para su despliegue.
+En la carpeta **Despliegue_Local** se encuentra los archivos necesarios para su despliegue.
 
-El archivo de *docker-compose.yml* cuenta con una configuración para crear dos contenedores, uno de MySQL para el uso de la BD y otro de Wildlfy para el despliegue de la aplicación en localhost por el puerto 8080.
+El archivo de *docker-compose.yml* cuenta con una configuración para crear el contenedor de MySQL para el uso de la BD en local.
 
 ```docker
-
 docker pull mysql
 
 docker compose up -d
 ```
 
-Con esto crearemos dichos contenedores y podremos empezar con la configuración de la BD y del DataSource necesario en la consola de Wildfly por el puerto 9990.
+![imagen](Capturas/C1.png)
+![imagen](Capturas/C2.png)
+
+Con esto crearemos dichos contenedores y podremos empezar con la configuración de la BD y del DataSource necesario en la consola de Wildfly por el puerto 9990. Podremos usar esta consola gracias a que al abrir el proyecto, este está configurado con JBooss/Wildlfy.
+
+![imagen](Capturas/C10.png)
+![imagen](Capturas/C11.png)
 
  - **Configuración de la BD:**
 
@@ -30,7 +35,7 @@ Primero, mediante la herramienta de DBeaver conectaremos con la BD.
 
 Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos MySQL para crear la BD.
 
-![imagen](Capturas/BD1.png)
+![imagen](Capturas/C3.png)
 
  Introduciremos los datos necesario:
 
@@ -40,20 +45,37 @@ Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos
 
  - Usuario y contraseña: natalia
 
-![imagen](Capturas/BD2.png)
+Para asegurarnos de no tener problemas, podemos iniciar directamente la conexión con el usuario root y la Database mysql, así no tendremos problemas con los usuarios y los permisos.
 
-Probamos la conexión para crear y finalizamos. Se habrá creado la conexión a la BD para el proyecto.
+![imagen](Capturas/C4.png)
 
-![imagen](Capturas/BD3.png)
+Probamos la conexión creada. También daremos permisos al usuario creado en el compose para no tener problemas a la hora de modificar o consultar la BD.
 
- - **Configuración de Wildfly:**
-
-Para esto será neceario entrar a la consola que facilita Wildlfy para la conexión del DataSource. Entraremos mediante un navegador web a localhost:9990 y las credenciales para el acceso son admin.
+![imagen](Capturas/C6.png)
+![imagen](Capturas/C5.png)
 
  - **Cargar la BD con datos de prueba:**
 
 Para cargar la BD y ver la funcionalidad por completo del proyecto haremos lo siguiente.
 
+![imagen](Capturas/C7.png)
+![imagen](Capturas/C8.png)
+![imagen](Capturas/C9.png)
+
+ - **Configuración de Wildfly:**
+
+Para esto será neceario entrar a la consola que facilita Wildlfy para la conexión del DataSource. Entraremos mediante un navegador web a localhost:9990 y las credenciales para el acceso son admin.
+
+![imagen](Capturas/C12.png)
+![imagen](Capturas/C13.png)
+![imagen](Capturas/C14.png)
+![imagen](Capturas/C15.png)
+![imagen](Capturas/C16.png)
+![imagen](Capturas/C17.png)
+![imagen](Capturas/C18.png)
+![imagen](Capturas/C19.png)
+![imagen](Capturas/C20.png)
+![imagen](Capturas/C21.png)
 
 ## 3. Dinámica de uso
 
