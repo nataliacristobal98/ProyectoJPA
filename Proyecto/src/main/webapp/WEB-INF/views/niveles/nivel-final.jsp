@@ -53,6 +53,19 @@
 
     <main class="p-3 rounded-3 text-center w-50" style="background-color: rgba(255,255,255,0.61); margin-inline: auto;">
         <h1>Tu puntuación final es de...</h1>
+
+        <c:choose>
+            <c:when test="${puntos >= superado}">
+                <h3>¡5 puntos!</h3>
+                <p>¡Enhorabuena, has superado el test!</p>
+            </c:when>
+            <c:otherwise>
+                <h4>¡Oh, no!</h4>
+                <p>No superaste el test, vuelve a intentarlo</p>
+            </c:otherwise>
+        </c:choose>
+
+
         <div class="lead text-center">
             <a href="${mvc.basePath}/mundos/mundo" type="button" class="w-50 btn btn-lg btn-danger">Volver a Mundos</a>
         </div>

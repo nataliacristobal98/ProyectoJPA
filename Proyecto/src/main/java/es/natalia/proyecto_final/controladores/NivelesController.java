@@ -110,11 +110,11 @@ public class NivelesController {
     @GET
     @Path("/testSuperado")
     public String superado() {
-        System.out.println("ok, test superado");
+        //System.out.println("ok, test superado");
         HttpSession session = request.getSession();
 
-        System.out.println(session.getAttribute("puntosGanados"));
-
+        models.put("superado", 5);
+        models.put("puntos", Integer.parseInt(session.getAttribute("puntosGanados").toString()));
         return "niveles/nivel-final";
     }
 
