@@ -18,5 +18,4 @@ public class RestController {
         return "rest/donaciones";
     }
 
-
 }

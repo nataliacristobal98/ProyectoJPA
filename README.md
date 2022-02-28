@@ -51,6 +51,12 @@ Para asegurarnos de no tener problemas, podemos iniciar directamente la conexió
 
 Probamos la conexión creada. También daremos permisos al usuario creado en el compose para no tener problemas a la hora de modificar o consultar la BD.
 
+```sql
+use mysql;
+
+GRANT ALL PRIVILEGES ON proyectofinal.* TO 'natalia'@'%';
+```
+
 ![imagen](Capturas/C6.png)
 ![imagen](Capturas/C5.png)
 

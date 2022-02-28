@@ -2,7 +2,6 @@ package es.natalia.proyecto_final.controladores;
 
 import es.natalia.proyecto_final.entidades.*;
 import es.natalia.proyecto_final.servicios.AlumnoService;
-import es.natalia.proyecto_final.servicios.MundoService;
 import es.natalia.proyecto_final.servicios.NivelService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -87,17 +86,14 @@ public class NivelesController {
         // Para saber si se supera el Test, y por tanto obtener los puntos, se comprueba si está superado
         for (String respuestaSelect : respuestas) {
             Respuesta respuesta = nivelService.buscarIdRespuesta(Long.parseLong(respuestaSelect));
-
             // Añadimos los puntos al Alumno
             if (respuesta.getCorrecta()) {
                 puntos++;
             }
-
         }
 
         if(puntos>=5){
-            alumno.setPuntos(alumno.getPuntos()+puntos);
-            alumnoService.guardar(alumno);
+            alumnoService.guardarPuntos(puntos, alumno);
             session.setAttribute("puntosGanados", alumno.getPuntos());
         }else{
             session.setAttribute("puntosGanados", 0);

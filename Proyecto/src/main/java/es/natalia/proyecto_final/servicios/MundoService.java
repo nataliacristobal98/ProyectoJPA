@@ -17,7 +17,6 @@ public class MundoService {
     @Inject
     MundoRepository mundoRepository;
 
-
     public List<Mundo> findAll() {
         return mundoRepository.findAll();
     }
@@ -25,8 +24,5 @@ public class MundoService {
     public Optional<Mundo> buscarPorId(Long id) {
         return mundoRepository.findOptionalBy(id);
     }
-
-    public void guardar(Mundo mundo){mundoRepository.save(mundo);}
-
 
 }

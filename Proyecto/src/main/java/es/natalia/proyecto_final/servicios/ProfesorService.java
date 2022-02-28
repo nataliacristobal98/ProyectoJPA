@@ -18,5 +18,4 @@ public class ProfesorService {
         return profesorRepository.findAll();
     }
 
-    public Profesor findById(Long id){return profesorRepository.findBy(id);}
 }
