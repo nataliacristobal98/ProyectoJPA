@@ -33,7 +33,7 @@ Con esto crearemos dichos contenedores y podremos empezar con la configuración 
 
 Primero, mediante la herramienta de DBeaver conectaremos con la BD.
 
-Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos MySQL para crear la BD.
+Añadiremos una conexión nueva mediante el icono del enchufe(+), y seleccionaremos MySQL para crear la BD.
 
 ![imagen](Capturas/C3.png)
 
@@ -41,9 +41,9 @@ Añadiremos una conexión nueva mediante el icono del enchufe, y seleccionaremos
 
  - Server Host: localhost
 
- - Database: proyectofinal
+ - Database: proyectofinal / mysql
 
- - Usuario y contraseña: natalia
+ - Usuario y contraseña: natalia + natalia / root + natalia
 
 Para asegurarnos de no tener problemas, podemos iniciar directamente la conexión con el usuario root y la Database mysql, así no tendremos problemas con los usuarios y los permisos.
 
@@ -172,3 +172,4 @@ Como extra, he implementado dos servicios REST que mostraran la información de 
 ![imagen](Capturas/18.png)
 
 Sin embargo, el servicio de test produce fallos al tener un Set y no un List de preguntas. También, quise implementar la Api REST de Paypal, pero sin resultado tampoco. De todas maneras, lo he querido dejar en el proyecto como muestra de ejemplo.
+Para finalizar he añadido datos de prueba adicionales en cada test y preguntas. La parte de las lecciones quedarían sin rellenar ya que solo se trataría de texto, al igual que las recompensas que solo serían iconos o diplomas desbloqueables.
