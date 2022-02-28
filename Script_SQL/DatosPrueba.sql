@@ -186,7 +186,7 @@ CREATE TABLE `pregunta` (
   UNIQUE KEY `UK_ponavu69mi72hw54otxxliqdj` (`codigo_pregunta`),
   KEY `FK6ln0gn1q6lmg25xx3g2vnojfv` (`test_id`),
   CONSTRAINT `FK6ln0gn1q6lmg25xx3g2vnojfv` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +195,7 @@ CREATE TABLE `pregunta` (
 
 LOCK TABLES `pregunta` WRITE;
 /*!40000 ALTER TABLE `pregunta` DISABLE KEYS */;
-INSERT INTO `pregunta` VALUES (1,'HP01',NULL,'Pregunta 1: ¿Que etiqueta se usa para poner texto?',1),(2,'HP02',NULL,'Pregunta 2: ¿Donde se debe colocar el contenido que queremos enseñar en nuestra página web?',1),(3,'HP03',NULL,'Pregunta 3: De estas etiquetas, ¿cuál nos ayuda a crear un botón?',1),(4,'HP04',NULL,'Pregunta 4: Selecciona la que etiqueta que <strong>NO</strong> existe en lenguaje HTML',1),(5,'HP05',NULL,'Pregunta 5: ¿Podemos crear una etiqueta propia que no exita con anterioridad?',1);
+INSERT INTO `pregunta` VALUES (1,'HP01',NULL,'Pregunta 1: ¿Que etiqueta se usa para poner texto?',1),(2,'HP02',NULL,'Pregunta 2: ¿Donde se debe colocar el contenido que queremos enseñar en nuestra página web?',1),(3,'HP03',NULL,'Pregunta 3: De estas etiquetas, ¿cuál nos ayuda a crear un botón?',1),(4,'HP04',NULL,'Pregunta 4: Selecciona la que etiqueta que <strong>NO</strong> existe en lenguaje HTML',1),(5,'HP05',NULL,'Pregunta 5: ¿Podemos crear una etiqueta propia que no exita con anterioridad?',1),(6,'HP06',NULL,'Pregunta 1: La etiqueta &lt;title&gt;, ¿define el nombre del fichero que hemos creado?',2),(7,'HP07',NULL,'Pregunta 2: ¿Qué tipo de información debemos definir en esta parte del archivo?',2),(8,'HP08',NULL,'Pregunta 3: De las siguientes etiquetas, ¿cuál podemos usar dentro de &lt;head&gt;?',2),(9,'HP09',NULL,'Pregunta 4: Señala la etiqueta que nos ayuda a añadir estilos CSS en nuestra web:',2),(10,'HP10',NULL,'Pregunta 5: ¿Es visible la información que indicamos en esta etiqueta?',2),(11,'CP01',NULL,'Pregunta 1: ¿Dónde debemos incluir los estilos que queremos aplicar a nuestra web?',3),(12,'CP02','/proyecto_final/resources/img/preguntaCSS.png','Pregunta 2: Si queremos que una etiqueta &lt;p&gt; tenga color rojo, ¿qué deberiamos incluir en la imagen?',3),(13,'CP03',NULL,'Pregunta 3: ¿Con qué atributo añadimos un fondo de color?',3),(14,'CP04',NULL,'Pregunta 4: ¿Con que atributo añadimos un borde a nuestros elementos?',3),(15,'CP05',NULL,'Pregunta 5: ¿Existen colores predeterminados en CSS?',3);
 /*!40000 ALTER TABLE `pregunta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +267,7 @@ CREATE TABLE `respuesta` (
   UNIQUE KEY `UK_91fs739cw6ra4yatlcojjpa20` (`codigo`),
   KEY `FKd9oyrwyjw1otr38btjeevanif` (`pregunta_id`),
   CONSTRAINT `FKd9oyrwyjw1otr38btjeevanif` FOREIGN KEY (`pregunta_id`) REFERENCES `pregunta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,7 +276,7 @@ CREATE TABLE `respuesta` (
 
 LOCK TABLES `respuesta` WRITE;
 /*!40000 ALTER TABLE `respuesta` DISABLE KEYS */;
-INSERT INTO `respuesta` VALUES (1,'HR01','','&lt;p&gt;',1),(2,'HR02','\0','&lt;h1&gt;',1),(3,'HR03','\0','&lt;text&gt;',1),(4,'HR04','\0','&lt;a&gt;',1),(5,'HR05','\0','Dentro de la etiqueta &lt;head&gt;',2),(6,'HR06','','Dentro de la etiqueta &lt;body&gt;',2),(7,'HR07','\0','El lugar no importa mientras esté dentro de la etiqueta  &lt;html&gt;',2),(8,'HR08','\0','Ninguna de las anteriores es correcta',2),(9,'HR09','','&lt;button&gt;',3),(10,'HR10','\0','&lt;boton&gt;',3),(11,'HR11','\0','No podemos hacer un botón con HTML',3),(12,'HR12','\0','&lt;select&gt;',3),(13,'HR13','\0','&lt;h5&gt;',4),(14,'HR14','\0','&lt;input&gt;',4),(15,'HR15','\0','&lt;span&gt;',4),(16,'HR16','','Todas las anteriores pertenecen al lenguaje HTML',4),(17,'HR17','','No, este lenguaje no permite crear etiquetas propias',5),(18,'HR18','\0','Si, podemos crear las etiquetas que queramos',5),(19,'HR19','\0','Depende de las palabras que usemos para definirlas',5),(20,'HR20','\0','Si, pero solo en dentro de la etiqueta &lt;body&gt;',5);
+INSERT INTO `respuesta` VALUES (1,'HR01','','&lt;p&gt;',1),(2,'HR02','\0','&lt;h1&gt;',1),(3,'HR03','\0','&lt;text&gt;',1),(4,'HR04','\0','&lt;a&gt;',1),(5,'HR05','\0','Dentro de la etiqueta &lt;head&gt;',2),(6,'HR06','','Dentro de la etiqueta &lt;body&gt;',2),(7,'HR07','\0','El lugar no importa mientras esté dentro de la etiqueta  &lt;html&gt;',2),(8,'HR08','\0','Ninguna de las anteriores es correcta',2),(9,'HR09','','&lt;button&gt;',3),(10,'HR10','\0','&lt;boton&gt;',3),(11,'HR11','\0','No podemos hacer un botón con HTML',3),(12,'HR12','\0','&lt;select&gt;',3),(13,'HR13','\0','&lt;h5&gt;',4),(14,'HR14','\0','&lt;input&gt;',4),(15,'HR15','\0','&lt;span&gt;',4),(16,'HR16','','Todas las anteriores pertenecen al lenguaje HTML',4),(17,'HR17','','No, este lenguaje no permite crear etiquetas propias',5),(18,'HR18','\0','Si, podemos crear las etiquetas que queramos',5),(19,'HR19','\0','Depende de las palabras que usemos para definirlas',5),(20,'HR20','\0','Si, pero solo en dentro de la etiqueta &lt;body&gt;',5),(21,'HR21','\0','Sí, por eso es importante nombrar al fichero igual.',6),(22,'HR22','','No es necesario, no influye que sean distintos.',6),(23,'HR23','\0','No es neceario, pero es mejor que ambos se llamen igual.',6),(24,'HR24','\0','Ninguna de las respuestas anteriores es correcta.',6),(25,'HR25','','Se debe definir la información acerca del documento pero que no es necesario visualizar por pantalla.',7),(26,'HR26','\0','Se debe definir la información de el nombre y poco más.',7),(27,'HR27','\0','No es necesario su uso, solo si quieres definir información extra del documento.',7),(28,'HR28','\0','Solo se usa cuando queremos añadir estilos a nuestra web.',7),(29,'HR29','\0','&lt;span&gt;',8),(30,'HR30','\0','&lt;p&gt;',8),(31,'HR31','\0','&lt;body&gt;',8),(32,'HR32','','Ninguna de las anteriores.',8),(33,'HR33','\0','No ha una estiqueta que haga eso.',9),(34,'HR34','','&lt;link&gt;',9),(35,'HR35','\0','Solo se puede definir en el &lt;body&gt;',9),(36,'HR36','\0','&lt;meta&gt;',9),(37,'HR37','\0','Sí, es lo primero que nos muestra la web.',10),(38,'HR38','','Por lo general no, es información de metadatos que no es neceario mostrar',10),(39,'HR39','\0','Depende de si usamos esta etiqueta.',10),(40,'HR40','\0','Si ponemos la etiqueta &lt;visible&gt; sí.',10),(41,'CR01','\0','No importa donde lo hagamos.',11),(42,'CR02','\0','Tiene que ser después de la etiqueta &lt;body&gt;',11),(43,'CR03','\0','Tiene que ser dentro de &lt;head&gt;',11),(44,'CR04','','Tiene que ser dentro de &lt;head&gt; y dentro a su vez de &lt;style&gt;',11),(45,'CR05','\0','Un ¨.p¨ y un ¨color¨',12),(46,'CR06','','Un ¨p¨ y un ¨color¨',12),(47,'CR07','\0','Un ¨p¨ y un ¨text-color¨',12),(48,'CR08','\0','Un ¨.p¨ y un ¨text¨',12),(49,'CR09','','Con ¨background-color¨',13),(50,'CR10','\0','Con ¨background-style¨',13),(51,'CR11','\0','Con ¨background¨',13),(52,'CR12','\0','Con ¨color-fondo¨',13),(53,'CR13','\0','Con ¨border¨',14),(54,'CR14','\0','Con ¨bordes-estilo¨',14),(55,'CR15','','Con ¨border-style¨',14),(56,'CR16','\0','Con ¨style¨: border',14),(57,'CR17','\0','No, tenemos que agregarlos con un fichero.',15),(58,'CR18','\0','Sí, pero solo si nuestro fichero lo permite.',15),(59,'CR19','\0','No hace falta que los tenga porque HTML los tiene por defecto.',15),(60,'CR20','','Sí, disponemos de una gama de colores con nombre predeterminados para usar.',15);
 /*!40000 ALTER TABLE `respuesta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-25 22:18:37
+-- Dump completed on 2022-02-28 15:57:03
